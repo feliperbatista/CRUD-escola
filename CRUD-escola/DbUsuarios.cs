@@ -15,7 +15,7 @@ namespace CRUD_escola
     {
         public static MySqlConnection GetConnection()
         {
-            string sql = "Server = localhost; Port = 3306; Database = users; Uid = root; Pwd = @Fb010299";
+            string sql = "Server = localhost; Port = 3306; Database = escola; Uid = root; Pwd = ";
             MySqlConnection con = new MySqlConnection(sql);
             try
             {
@@ -23,17 +23,18 @@ namespace CRUD_escola
             } 
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não foi possível se conectar ao servidor.\r\nEntre em contato com feliperodriguesbatista@outlook.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return con;
         }
 
         public static async void AddUser(Usuarios user)
         {
-            string sql = "INSERT INTO usuarios VALUES (NULL, @UsuarioEmail, @UsuarioSenha, NULL, NULL )";
+            string sql = "INSERT INTO usuarios VALUES (NULL, @UsuarioNome, @UsuarioEmail, @UsuarioSenha, NULL, NULL )";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Parameters.Add("@UsuarioNome", MySqlDbType.VarString).Value = user.Nome;
             cmd.Parameters.Add("@UsuarioEmail", MySqlDbType.VarChar).Value = user.Email;
             cmd.Parameters.Add("@UsuarioSenha", MySqlDbType.VarChar).Value = user.Senha;
             try

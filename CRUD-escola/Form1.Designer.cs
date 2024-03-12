@@ -28,229 +28,337 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             labelLogin = new Label();
-            groupBoxLogin = new GroupBox();
-            labelMensagemLogin = new Label();
-            buttonLogin = new Button();
             textBoxSenhaLogin = new TextBox();
-            label2 = new Label();
             textBoxEmailLogin = new TextBox();
+            panelEmailLogin = new Panel();
+            pictureBoxEmailLogin = new PictureBox();
+            panelCadastro = new Panel();
+            labelFelipe = new Label();
+            pictureBox2 = new PictureBox();
+            label2 = new Label();
+            pictureBoxCadastrar = new PictureBox();
             label1 = new Label();
-            groupBoxCadastro = new GroupBox();
-            labelMensagemCadastro = new Label();
-            buttonCadastrar = new Button();
-            textBoxSenhaCadastro = new TextBox();
-            label3 = new Label();
-            textBoxEmailCadastro = new TextBox();
-            label4 = new Label();
-            buttonExibirSenhaLogin = new Button();
-            buttonExibirSenhaCadastro = new Button();
-            groupBoxLogin.SuspendLayout();
-            groupBoxCadastro.SuspendLayout();
+            pictureBoxFecharJanela = new PictureBox();
+            pictureBoxExibirSenhaLogin = new PictureBox();
+            panelSenhaLogin = new Panel();
+            pictureBoxSenhaLogin = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            pictureBoxLogin = new PictureBox();
+            panelAcesso = new Panel();
+            pictureBox1 = new PictureBox();
+            labelErroSenhaLogin = new Label();
+            labelErroEmailLogin = new Label();
+            toolTip1 = new ToolTip(components);
+            panelEmailLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxEmailLogin).BeginInit();
+            panelCadastro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxExibirSenhaLogin).BeginInit();
+            panelSenhaLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSenhaLogin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogin).BeginInit();
+            panelAcesso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // labelLogin
             // 
             labelLogin.AutoSize = true;
-            labelLogin.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelLogin.Location = new Point(354, 29);
+            labelLogin.Font = new Font("Calibri", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelLogin.ForeColor = Color.FromArgb(13, 202, 122);
+            labelLogin.Location = new Point(146, 86);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(92, 41);
+            labelLogin.Size = new Size(259, 41);
             labelLogin.TabIndex = 0;
-            labelLogin.Text = "Login";
-            // 
-            // groupBoxLogin
-            // 
-            groupBoxLogin.Controls.Add(buttonExibirSenhaLogin);
-            groupBoxLogin.Controls.Add(labelMensagemLogin);
-            groupBoxLogin.Controls.Add(buttonLogin);
-            groupBoxLogin.Controls.Add(textBoxSenhaLogin);
-            groupBoxLogin.Controls.Add(label2);
-            groupBoxLogin.Controls.Add(textBoxEmailLogin);
-            groupBoxLogin.Controls.Add(label1);
-            groupBoxLogin.Location = new Point(63, 95);
-            groupBoxLogin.Name = "groupBoxLogin";
-            groupBoxLogin.Size = new Size(318, 325);
-            groupBoxLogin.TabIndex = 1;
-            groupBoxLogin.TabStop = false;
-            groupBoxLogin.Text = "Fazer login";
-            // 
-            // labelMensagemLogin
-            // 
-            labelMensagemLogin.AutoSize = true;
-            labelMensagemLogin.ForeColor = Color.IndianRed;
-            labelMensagemLogin.Location = new Point(6, 193);
-            labelMensagemLogin.Name = "labelMensagemLogin";
-            labelMensagemLogin.Size = new Size(36, 20);
-            labelMensagemLogin.TabIndex = 5;
-            labelMensagemLogin.Text = "Erro";
-            labelMensagemLogin.Visible = false;
-            // 
-            // buttonLogin
-            // 
-            buttonLogin.Location = new Point(112, 266);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(94, 29);
-            buttonLogin.TabIndex = 4;
-            buttonLogin.Text = "Login";
-            buttonLogin.UseVisualStyleBackColor = true;
+            labelLogin.Text = "Acesse sua conta";
             // 
             // textBoxSenhaLogin
             // 
-            textBoxSenhaLogin.Location = new Point(6, 145);
+            textBoxSenhaLogin.BorderStyle = BorderStyle.None;
+            textBoxSenhaLogin.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxSenhaLogin.ForeColor = Color.Silver;
+            textBoxSenhaLogin.Location = new Point(44, 10);
             textBoxSenhaLogin.Name = "textBoxSenhaLogin";
-            textBoxSenhaLogin.PasswordChar = '*';
-            textBoxSenhaLogin.Size = new Size(269, 27);
+            textBoxSenhaLogin.Size = new Size(215, 22);
             textBoxSenhaLogin.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 113);
-            label2.Name = "label2";
-            label2.Size = new Size(115, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Insira sua senha:";
+            textBoxSenhaLogin.Text = "Digite sua senha";
             // 
             // textBoxEmailLogin
             // 
-            textBoxEmailLogin.Location = new Point(6, 76);
+            textBoxEmailLogin.BorderStyle = BorderStyle.None;
+            textBoxEmailLogin.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxEmailLogin.ForeColor = Color.Silver;
+            textBoxEmailLogin.Location = new Point(44, 9);
             textBoxEmailLogin.Name = "textBoxEmailLogin";
-            textBoxEmailLogin.Size = new Size(306, 27);
+            textBoxEmailLogin.Size = new Size(256, 22);
             textBoxEmailLogin.TabIndex = 1;
+            textBoxEmailLogin.Text = "Digite seu email";
+            // 
+            // panelEmailLogin
+            // 
+            panelEmailLogin.CausesValidation = false;
+            panelEmailLogin.Controls.Add(pictureBoxEmailLogin);
+            panelEmailLogin.Controls.Add(textBoxEmailLogin);
+            panelEmailLogin.Location = new Point(120, 170);
+            panelEmailLogin.Name = "panelEmailLogin";
+            panelEmailLogin.Size = new Size(310, 42);
+            panelEmailLogin.TabIndex = 9;
+            // 
+            // pictureBoxEmailLogin
+            // 
+            pictureBoxEmailLogin.BackColor = Color.White;
+            pictureBoxEmailLogin.Image = Properties.Resources.icone_email;
+            pictureBoxEmailLogin.Location = new Point(8, 6);
+            pictureBoxEmailLogin.Name = "pictureBoxEmailLogin";
+            pictureBoxEmailLogin.Size = new Size(30, 31);
+            pictureBoxEmailLogin.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxEmailLogin.TabIndex = 13;
+            pictureBoxEmailLogin.TabStop = false;
+            // 
+            // panelCadastro
+            // 
+            panelCadastro.BackgroundImage = Properties.Resources.panel_bg;
+            panelCadastro.Controls.Add(labelFelipe);
+            panelCadastro.Controls.Add(pictureBox2);
+            panelCadastro.Controls.Add(label2);
+            panelCadastro.Controls.Add(pictureBoxCadastrar);
+            panelCadastro.Controls.Add(label1);
+            panelCadastro.Dock = DockStyle.Right;
+            panelCadastro.Location = new Point(550, 0);
+            panelCadastro.Name = "panelCadastro";
+            panelCadastro.Size = new Size(398, 487);
+            panelCadastro.TabIndex = 10;
+            // 
+            // labelFelipe
+            // 
+            labelFelipe.AutoSize = true;
+            labelFelipe.BackColor = Color.Transparent;
+            labelFelipe.Font = new Font("Calibri", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelFelipe.ForeColor = Color.White;
+            labelFelipe.Location = new Point(148, 463);
+            labelFelipe.Name = "labelFelipe";
+            labelFelipe.Size = new Size(238, 15);
+            labelFelipe.TabIndex = 18;
+            labelFelipe.Text = "Desenvolvido por Felipe Rodrigues Batista";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.traco_branco;
+            pictureBox2.Location = new Point(169, 183);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(61, 17);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 17;
+            pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(91, 219);
+            label2.Name = "label2";
+            label2.Size = new Size(216, 53);
+            label2.TabIndex = 13;
+            label2.Text = "Faça seu cadastro para ter acesso ao sistema.";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxCadastrar
+            // 
+            pictureBoxCadastrar.BackColor = Color.Transparent;
+            pictureBoxCadastrar.Image = Properties.Resources.button_cadastro_inicio;
+            pictureBoxCadastrar.Location = new Point(109, 292);
+            pictureBoxCadastrar.Name = "pictureBoxCadastrar";
+            pictureBoxCadastrar.Size = new Size(183, 52);
+            pictureBoxCadastrar.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBoxCadastrar.TabIndex = 12;
+            pictureBoxCadastrar.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 44);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Calibri", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(91, 143);
             label1.Name = "label1";
-            label1.Size = new Size(114, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Insira seu email:";
+            label1.Size = new Size(217, 41);
+            label1.TabIndex = 11;
+            label1.Text = "Crie sua conta";
             // 
-            // groupBoxCadastro
+            // pictureBoxFecharJanela
             // 
-            groupBoxCadastro.Controls.Add(buttonExibirSenhaCadastro);
-            groupBoxCadastro.Controls.Add(labelMensagemCadastro);
-            groupBoxCadastro.Controls.Add(buttonCadastrar);
-            groupBoxCadastro.Controls.Add(textBoxSenhaCadastro);
-            groupBoxCadastro.Controls.Add(label3);
-            groupBoxCadastro.Controls.Add(textBoxEmailCadastro);
-            groupBoxCadastro.Controls.Add(label4);
-            groupBoxCadastro.Location = new Point(419, 95);
-            groupBoxCadastro.Name = "groupBoxCadastro";
-            groupBoxCadastro.Size = new Size(318, 325);
-            groupBoxCadastro.TabIndex = 2;
-            groupBoxCadastro.TabStop = false;
-            groupBoxCadastro.Text = "Fazer cadastro";
+            pictureBoxFecharJanela.BackColor = Color.Transparent;
+            pictureBoxFecharJanela.Image = Properties.Resources.button_fechar_janela;
+            pictureBoxFecharJanela.Location = new Point(12, 12);
+            pictureBoxFecharJanela.Name = "pictureBoxFecharJanela";
+            pictureBoxFecharJanela.Size = new Size(22, 22);
+            pictureBoxFecharJanela.TabIndex = 11;
+            pictureBoxFecharJanela.TabStop = false;
+            toolTip1.SetToolTip(pictureBoxFecharJanela, "Fechar");
             // 
-            // labelMensagemCadastro
+            // pictureBoxExibirSenhaLogin
             // 
-            labelMensagemCadastro.ForeColor = Color.IndianRed;
-            labelMensagemCadastro.Location = new Point(6, 193);
-            labelMensagemCadastro.Name = "labelMensagemCadastro";
-            labelMensagemCadastro.Size = new Size(306, 70);
-            labelMensagemCadastro.TabIndex = 10;
-            labelMensagemCadastro.Text = "Erro";
-            labelMensagemCadastro.Visible = false;
+            pictureBoxExibirSenhaLogin.Image = Properties.Resources.button_exibir_senha_cinza;
+            pictureBoxExibirSenhaLogin.Location = new Point(265, 7);
+            pictureBoxExibirSenhaLogin.Name = "pictureBoxExibirSenhaLogin";
+            pictureBoxExibirSenhaLogin.Size = new Size(42, 28);
+            pictureBoxExibirSenhaLogin.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBoxExibirSenhaLogin.TabIndex = 12;
+            pictureBoxExibirSenhaLogin.TabStop = false;
+            toolTip1.SetToolTip(pictureBoxExibirSenhaLogin, "Exibir/ocultar senha");
             // 
-            // buttonCadastrar
+            // panelSenhaLogin
             // 
-            buttonCadastrar.Location = new Point(112, 266);
-            buttonCadastrar.Name = "buttonCadastrar";
-            buttonCadastrar.Size = new Size(94, 29);
-            buttonCadastrar.TabIndex = 9;
-            buttonCadastrar.Text = "Cadastrar";
-            buttonCadastrar.UseVisualStyleBackColor = true;
+            panelSenhaLogin.Controls.Add(pictureBoxSenhaLogin);
+            panelSenhaLogin.Controls.Add(pictureBoxExibirSenhaLogin);
+            panelSenhaLogin.Controls.Add(textBoxSenhaLogin);
+            panelSenhaLogin.Location = new Point(120, 258);
+            panelSenhaLogin.Name = "panelSenhaLogin";
+            panelSenhaLogin.Size = new Size(310, 42);
+            panelSenhaLogin.TabIndex = 13;
             // 
-            // textBoxSenhaCadastro
+            // pictureBoxSenhaLogin
             // 
-            textBoxSenhaCadastro.Location = new Point(6, 145);
-            textBoxSenhaCadastro.Name = "textBoxSenhaCadastro";
-            textBoxSenhaCadastro.PasswordChar = '*';
-            textBoxSenhaCadastro.Size = new Size(269, 27);
-            textBoxSenhaCadastro.TabIndex = 8;
+            pictureBoxSenhaLogin.BackColor = Color.White;
+            pictureBoxSenhaLogin.Image = Properties.Resources.icone_senha;
+            pictureBoxSenhaLogin.Location = new Point(8, 6);
+            pictureBoxSenhaLogin.Name = "pictureBoxSenhaLogin";
+            pictureBoxSenhaLogin.Size = new Size(30, 31);
+            pictureBoxSenhaLogin.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxSenhaLogin.TabIndex = 13;
+            pictureBoxSenhaLogin.TabStop = false;
             // 
-            // label3
+            // timer1
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 113);
-            label3.Name = "label3";
-            label3.Size = new Size(115, 20);
-            label3.TabIndex = 7;
-            label3.Text = "Insira sua senha:";
+            timer1.Enabled = true;
+            timer1.Interval = 10;
             // 
-            // textBoxEmailCadastro
+            // pictureBoxLogin
             // 
-            textBoxEmailCadastro.Location = new Point(6, 76);
-            textBoxEmailCadastro.Name = "textBoxEmailCadastro";
-            textBoxEmailCadastro.Size = new Size(306, 27);
-            textBoxEmailCadastro.TabIndex = 6;
+            pictureBoxLogin.BackColor = Color.Transparent;
+            pictureBoxLogin.Image = Properties.Resources.button_login_colorido;
+            pictureBoxLogin.Location = new Point(184, 348);
+            pictureBoxLogin.Name = "pictureBoxLogin";
+            pictureBoxLogin.Size = new Size(183, 52);
+            pictureBoxLogin.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBoxLogin.TabIndex = 13;
+            pictureBoxLogin.TabStop = false;
             // 
-            // label4
+            // panelAcesso
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 44);
-            label4.Name = "label4";
-            label4.Size = new Size(114, 20);
-            label4.TabIndex = 5;
-            label4.Text = "Insira seu email:";
+            panelAcesso.Controls.Add(pictureBox1);
+            panelAcesso.Controls.Add(pictureBoxFecharJanela);
+            panelAcesso.Controls.Add(labelErroSenhaLogin);
+            panelAcesso.Controls.Add(labelErroEmailLogin);
+            panelAcesso.Controls.Add(pictureBoxLogin);
+            panelAcesso.Controls.Add(labelLogin);
+            panelAcesso.Controls.Add(panelSenhaLogin);
+            panelAcesso.Controls.Add(panelEmailLogin);
+            panelAcesso.Dock = DockStyle.Fill;
+            panelAcesso.Location = new Point(0, 0);
+            panelAcesso.Name = "panelAcesso";
+            panelAcesso.Size = new Size(550, 487);
+            panelAcesso.TabIndex = 11;
             // 
-            // buttonExibirSenhaLogin
+            // pictureBox1
             // 
-            buttonExibirSenhaLogin.Location = new Point(277, 145);
-            buttonExibirSenhaLogin.Name = "buttonExibirSenhaLogin";
-            buttonExibirSenhaLogin.Size = new Size(35, 27);
-            buttonExibirSenhaLogin.TabIndex = 6;
-            buttonExibirSenhaLogin.UseVisualStyleBackColor = true;
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.traco;
+            pictureBox1.Location = new Point(245, 126);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(61, 17);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
             // 
-            // buttonExibirSenhaCadastro
+            // labelErroSenhaLogin
             // 
-            buttonExibirSenhaCadastro.Location = new Point(277, 145);
-            buttonExibirSenhaCadastro.Name = "buttonExibirSenhaCadastro";
-            buttonExibirSenhaCadastro.Size = new Size(35, 27);
-            buttonExibirSenhaCadastro.TabIndex = 11;
-            buttonExibirSenhaCadastro.UseVisualStyleBackColor = true;
+            labelErroSenhaLogin.AutoSize = true;
+            labelErroSenhaLogin.BackColor = Color.Transparent;
+            labelErroSenhaLogin.Font = new Font("Calibri", 9F);
+            labelErroSenhaLogin.ForeColor = Color.IndianRed;
+            labelErroSenhaLogin.Location = new Point(124, 313);
+            labelErroSenhaLogin.Name = "labelErroSenhaLogin";
+            labelErroSenhaLogin.Size = new Size(73, 18);
+            labelErroSenhaLogin.TabIndex = 15;
+            labelErroSenhaLogin.Text = "Erro senha";
+            labelErroSenhaLogin.Visible = false;
+            // 
+            // labelErroEmailLogin
+            // 
+            labelErroEmailLogin.AutoSize = true;
+            labelErroEmailLogin.BackColor = Color.Transparent;
+            labelErroEmailLogin.Font = new Font("Calibri", 9F);
+            labelErroEmailLogin.ForeColor = Color.IndianRed;
+            labelErroEmailLogin.Location = new Point(123, 225);
+            labelErroEmailLogin.Name = "labelErroEmailLogin";
+            labelErroEmailLogin.Size = new Size(71, 18);
+            labelErroEmailLogin.TabIndex = 14;
+            labelErroEmailLogin.Text = "Erro email";
+            labelErroEmailLogin.Visible = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 487);
-            Controls.Add(groupBoxCadastro);
-            Controls.Add(groupBoxLogin);
-            Controls.Add(labelLogin);
-            MaximumSize = new Size(818, 534);
-            MinimumSize = new Size(818, 534);
+            BackColor = Color.White;
+            ClientSize = new Size(948, 487);
+            Controls.Add(panelAcesso);
+            Controls.Add(panelCadastro);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            groupBoxLogin.ResumeLayout(false);
-            groupBoxLogin.PerformLayout();
-            groupBoxCadastro.ResumeLayout(false);
-            groupBoxCadastro.PerformLayout();
+            panelEmailLogin.ResumeLayout(false);
+            panelEmailLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxEmailLogin).EndInit();
+            panelCadastro.ResumeLayout(false);
+            panelCadastro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxExibirSenhaLogin).EndInit();
+            panelSenhaLogin.ResumeLayout(false);
+            panelSenhaLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSenhaLogin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogin).EndInit();
+            panelAcesso.ResumeLayout(false);
+            panelAcesso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Label labelLogin;
-        private GroupBox groupBoxLogin;
-        private Label label1;
-        private GroupBox groupBoxCadastro;
-        private Button buttonLogin;
         private TextBox textBoxSenhaLogin;
-        private Label label2;
         private TextBox textBoxEmailLogin;
-        private Button buttonCadastrar;
-        private TextBox textBoxSenhaCadastro;
-        private Label label3;
-        private TextBox textBoxEmailCadastro;
-        private Label label4;
-        private Label labelMensagemLogin;
         private Label labelMensagemCadastro;
-        private Button buttonExibirSenhaLogin;
-        private Button buttonExibirSenhaCadastro;
+        private Label labelMensagemLogin;
+        private Panel panelEmailLogin;
+        private Panel panelCadastro;
+        private Label label1;
+        private PictureBox pictureBoxCadastrar;
+        private PictureBox pictureBoxFecharJanela;
+        private PictureBox pictureBoxExibirSenhaLogin;
+        private PictureBox pictureBoxEmailLogin;
+        private Panel panelSenhaLogin;
+        private PictureBox pictureBoxSenhaLogin;
+        private System.Windows.Forms.Timer timer1;
+        private PictureBox pictureBoxLogin;
+        private Panel panelAcesso;
+        private Label label2;
+        private Label labelErroSenhaLogin;
+        private Label labelErroEmailLogin;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private ToolTip toolTip1;
+        private Label labelFelipe;
     }
 }

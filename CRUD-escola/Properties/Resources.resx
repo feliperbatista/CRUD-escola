@@ -118,7 +118,163 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icone-email1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="traco-branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\traco-branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="panel-bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panel-bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-telefone-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-telefone-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icone-perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone-perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cadastrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cadastrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-esconder-senha-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-esconder-senha-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-idade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-idade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-pessoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-pessoa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cadastrar-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cadastrar-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-turma" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-turma.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-email-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-pessoa-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-pessoa-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-esconder-senha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-esconder-senha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-idade-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-idade-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-exibir-senha-cinza" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-exibir-senha-cinza.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cancelar-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cancelar-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-senha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-senha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circulo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circulo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="traco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\traco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-senha-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-senha-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-telefone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-telefone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-login-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-login-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-turma-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-turma-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-exibir-senha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-exibir-senha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-matricula-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-matricula-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circulo5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circulo5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cadastrar-inicio-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cadastrar-inicio-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-email-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-email-colorido1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email-colorido1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-turma-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-turma-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-idade-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-idade-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-email-erro1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-email-erro1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circulo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circulo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-exibir-senha-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-exibir-senha-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-telefone-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-telefone-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-matricula-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-matricula-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circulo4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circulo4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-fechar-janela" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-fechar-janela.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circulo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circulo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cadastro-inicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cadastro-inicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-cadastar-aluno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-cadastar-aluno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-pessoa-colorido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-pessoa-colorido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonn-login-branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buttonn-login-branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-esconder-senha-cinza" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-esconder-senha-cinza.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button-minimizar-janela" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button-minimizar-janela.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-senha-erro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-senha-erro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-matricula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-matricula.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="adicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adicionar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

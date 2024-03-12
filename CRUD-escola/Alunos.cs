@@ -1,10 +1,12 @@
-﻿using System;
+﻿using CRUD_escola.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,245 +20,104 @@ namespace CRUD_escola
         {
             InitializeComponent();
 
-            buttonCriar.Click += ButtonCriar_Click;
-            buttonListar.Click += ButtonListar_Click;
-            buttonAtualizar.Click += ButtonAtualizar_Click;
-            buttonDeletar.Click += ButtonDeletar_Click;
+            pictureBoxFecharJanela.Click += PictureBoxFecharJanela_Click;
+            pictureBoxMinimizarJanela.Click += PictureBoxMinimizarJanela_Click;
 
-            textBoxMatricula.TextChanged += TextBoxMatricula_TextChanged;
-            textBoxIdade.TextChanged += TextBoxIdade_TextChanged;
+            textBoxPesquisar.TextChanged += TextBoxPesquisar_TextChanged;
 
-            buttonFoto.Click += ButtonFoto_Click;
+            pictureBoxAdicionar.Click += PictureBoxAdicionar_Click;
+            pictureBoxAtualizar.Click += PictureBoxAtualizar_Click;
+
 
         }
 
-        private void ButtonCriar_Click(object? sender, EventArgs e)
+        private void TextBoxPesquisar_TextChanged(object? sender, EventArgs e)
         {
-            labelNome.Visible = false;
-            labelMatricula.Visible = false;
-            labelIdade.Visible = false;
-            labelTurma.Visible = false;
-            if (verificarCampos("criar")) DbAlunos.AddAluno(criarAluno());
+            if(dataGridView1.DataSource != null)
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome = '{0}'", textBoxPesquisar.Text);
         }
 
-        private void ButtonListar_Click(object? sender, EventArgs e)
+        private void PictureBoxAdicionar_Click(object? sender, EventArgs e)
         {
-            labelNome.Visible = false;
-            labelMatricula.Visible = false;
-            labelIdade.Visible = false;
-            labelTurma.Visible = false;
-            DbAlunos.ReadAlunos(dataGridView1);
+            NovoAluno novo = new();
+            novo.ShowDialog();
         }
 
-        private void ButtonAtualizar_Click(object? sender, EventArgs e)
+        private void PictureBoxAtualizar_Click(object? sender, EventArgs e)
         {
-            labelNome.Visible = false;
-            labelMatricula.Visible = false;
-            labelIdade.Visible = false;
-            labelTurma.Visible = false;
-            if (verificarCampos("atualizar")) DbAlunos.UpdateAluno(criarAluno());
+            DataSet ds = DbAlunos.ReadAlunos();
+            DataTable dt = new();
+            dt.Columns.Add(new DataColumn("Foto", typeof(Bitmap)));
+            foreach (DataColumn dc in ds.Tables[0].Columns)
+            {
+                dt.Columns.Add(dc.ColumnName, dc.DataType);
+            }
+
+            Font fonte = new("Calibri", 14, FontStyle.Bold);
+            SolidBrush brush = new(Color.White);
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center;
+
+            int i = 0;
+            int a = 1;
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Image image = Image.FromFile($"C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Resources\\circulo{a}.png");
+
+                Bitmap foto = new Bitmap(image);
+                Graphics g = Graphics.FromImage(foto);
+                Rectangle rectangle = new(0, 0, foto.Width, foto.Height);
+
+                string inicial = ds.Tables[0].Rows[i].Field<string>(0).ToString();
+                inicial = inicial.Substring(0, 1);
+
+                g.DrawString(inicial, fonte, brush, rectangle, stringFormat);
+
+
+
+                dt.Rows.Add(foto, ds.Tables[0].Rows[i].Field<string>(0), ds.Tables[0].Rows[i].Field<string>(1), ds.Tables[0].Rows[i].Field<string>(2), ds.Tables[0].Rows[i].Field<Int32>(3), ds.Tables[0].Rows[i].Field<Int32>(4), ds.Tables[0].Rows[i].Field<Int32>(5), ds.Tables[0].Rows[i].Field<string>(6));
+                i++;
+                a++;
+                if (a == 6) a = 1;
+            }
+            dataGridView1.DataSource = dt;
+
+            if (dataGridView1.ColumnCount == 10)
+                return;
+
+            DataGridViewButtonColumn dgvButtonEditar = new();
+            dgvButtonEditar.Text = "Editar";
+            dgvButtonEditar.UseColumnTextForButtonValue = true;
+            dgvButtonEditar.CellTemplate.Style.ForeColor = Form1.verde;
+            dgvButtonEditar.CellTemplate.Style.BackColor = Color.White;
+            dgvButtonEditar.CellTemplate.Style.Font = new Font("Calibri", 10);
+            dgvButtonEditar.CellTemplate.Style.SelectionBackColor = Color.White;
+            dgvButtonEditar.CellTemplate.Style.SelectionForeColor = Form1.verde;
+            dgvButtonEditar.FlatStyle = FlatStyle.Flat;
+
+            DataGridViewButtonColumn dgvButtonExcluir = new();
+            dgvButtonExcluir.Text = "Excluir";
+            dgvButtonExcluir.UseColumnTextForButtonValue = true;
+            dgvButtonExcluir.CellTemplate.Style.ForeColor = Form1.vermelho;
+            dgvButtonExcluir.CellTemplate.Style.BackColor = Color.White;
+            dgvButtonExcluir.CellTemplate.Style.Font = new Font("Calibri", 10);
+            dgvButtonExcluir.FlatStyle = FlatStyle.Flat;
+
+            dataGridView1.Columns.Insert(dataGridView1.ColumnCount, dgvButtonEditar);
+            dataGridView1.Columns.Insert(dataGridView1.ColumnCount, dgvButtonExcluir);
+
+
         }
 
-
-        private void ButtonDeletar_Click(object? sender, EventArgs e)
+        private void PictureBoxFecharJanela_Click(object? sender, EventArgs e)
         {
-            labelNome.Visible = false;
-            labelMatricula.Visible = false;
-            labelIdade.Visible = false;
-            labelTurma.Visible = false;
-            if (!verificaMatricula("deletar")) DbAlunos.Delete(Convert.ToInt32(textBoxMatricula.Text));
+            Close();
         }
 
-        private void ButtonFoto_Click(object? sender, EventArgs e)
+        private void PictureBoxMinimizarJanela_Click(object? sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Arquivo de imagem | *.jpg; *.jpeg; *.png";
-            openFileDialog1.Title = "Selecione uma foto";
-            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
-            {
-                if(verificaFoto()) pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
-            }
+            WindowState = FormWindowState.Minimized;
         }
-
-        private Aluno criarAluno()
-        {
-            string nome = textBoxNome.Text;
-            int matricula = Convert.ToInt32(textBoxMatricula.Text);
-            int idade = Convert.ToInt16(textBoxIdade.Text);
-            string turma = comboBoxTurma.Text;
-            byte[] foto;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Bitmap bitmap = new Bitmap(pictureBox1.Image);
-                bitmap.Save(ms, ImageFormat.Jpeg);
-                foto = ms.ToArray();
-            }
-
-            Aluno aluno = new(nome, matricula, idade, turma, foto);
-            return aluno;
-        }
-
-        private bool verificarCampos(string opcao)
-        {
-            bool nomeVerificado = verificaNome();
-            bool matriculaVerificada = verificaMatricula(opcao);
-            bool idadeVerificada = verificaIdade();
-            bool turmaVerificada = verificaTurma();
-
-            bool verificado = false;
-
-            if (nomeVerificado && matriculaVerificada && idadeVerificada && turmaVerificada && opcao == "criar")
-            {
-                verificado = true;
-            }
-
-            if (nomeVerificado && !matriculaVerificada && idadeVerificada && turmaVerificada && opcao == "atualizar")
-            {
-                verificado = true;
-            }
-
-            return verificado;
-        }
-
-        private bool verificaNome() 
-        {
-            if (string.IsNullOrEmpty(textBoxNome.Text))
-            {
-                labelNome.Text = "Insira o nome do(a) aluno(a).";
-                labelNome.Visible = true;
-                return false;
-            }
-            string nome = textBoxNome.Text;
-            if(nome.Length<3 || nome.Length>50) 
-            {
-                labelNome.Text = "Nome precisa ter entre 3 e 50 caracteres.";
-                labelNome.Visible = true;
-                return false;
-            }
-            return true;
-        }
-
-        private bool verificaMatricula(string opcao)
-        {
-            if (string.IsNullOrEmpty(textBoxMatricula.Text))
-            {
-                labelMatricula.Text = "Insira a matrícula do(a) aluno(a).";
-                labelMatricula.Visible = true;
-                if (opcao == "deletar") return true;
-                return false;
-            }
-            if (textBoxMatricula.Text.Length != 6)
-            {
-                labelMatricula.Text = "O campo de matrícula deve conter seis dígitos.";
-                labelMatricula.Visible = true;
-                if (opcao == "deletar") return true;
-                return false;
-            }
-            int matricula;
-            try
-            {
-                matricula = Convert.ToInt32(textBoxMatricula.Text);
-            }
-            catch
-            {
-                labelMatricula.Text = "O campo de matrícula deve conter somente números.";
-                labelMatricula.Visible = true;
-                if(opcao =="deletar") return true;
-                return false;
-            }
-            if (DbAlunos.verificaMatricula(matricula) && opcao=="criar")
-            {
-                labelMatricula.Text = "A matrícula inserida já está cadastrada.";
-                labelMatricula.Visible = true;
-                return false;
-            }
-            if (!DbAlunos.verificaMatricula(matricula) && (opcao == "atualizar" || opcao =="deletar"))
-            {
-                labelMatricula.Text = "Matrícula não existe.";
-                labelMatricula.Visible = true;
-                return false;
-            }
-            return !DbAlunos.verificaMatricula(matricula);
-        }
-
-        private bool verificaIdade()
-        {
-            if (string.IsNullOrEmpty(textBoxIdade.Text))
-            {
-                labelIdade.Text = "Insira a idade do(a) aluno(a).";
-                labelIdade.Visible = true;
-                return false;
-            }
-            if (textBoxIdade.Text.Length>2)
-            {
-                labelIdade.Text = "Insira uma idade válida.";
-                labelIdade.Visible = true;
-                return false;
-            }
-            int idade;
-            try
-            {
-                idade = Convert.ToInt32(textBoxIdade.Text);
-            }
-            catch
-            {
-                labelIdade.Text = "O campo de idade deve conter somente números.";
-                labelIdade.Visible = true;
-                return false;
-            }
-            return true;
-        }
-
-        private bool verificaTurma()
-        {
-            if(string.IsNullOrEmpty(comboBoxTurma.Text)) 
-            {
-                labelTurma.Text = "Selecione uma turma.";
-                labelTurma.Visible = true;
-                return false;
-            }
-            return true;
-        }
-
-        private bool verificaFoto()
-        {
-            pictureBox1.Image.Save("arquivo");
-            var fileSizeInBytes = new FileInfo("arquivo").Length;
-            if (fileSizeInBytes > 2000000)
-            {
-                MessageBox.Show("Tamanho do arquivo de imagem inválido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-
-
-        private void TextBoxMatricula_TextChanged(object? sender, EventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxMatricula.Text, "[^0-9]"))
-            {
-                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length-1);
-                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
-            }
-            if (textBoxMatricula.Text.Length > 6)
-            {
-                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length - 1);
-                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
-            }
-        }
-
-        private void TextBoxIdade_TextChanged(object? sender, EventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxIdade.Text, "[^0-9]"))
-            {
-                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
-                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
-            }
-            if (textBoxIdade.Text.Length > 2)
-            {
-                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
-                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
-            }
-        }
-
     }
 }

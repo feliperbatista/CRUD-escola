@@ -13,7 +13,7 @@ namespace CRUD_escola
     {
         public static MySqlConnection GetConnection()
         {
-            string sql = "Server = localhost; Port = 3306; Database = users; Uid = root; Pwd = @Fb010299";
+            string sql = "Server = localhost; Port = 3306; Database = escola; Uid = root; Pwd =";
             MySqlConnection con = new MySqlConnection(sql);
             try
             {
@@ -28,14 +28,17 @@ namespace CRUD_escola
 
         public static async void AddAluno(Aluno aluno)
         {
-            string sql = "INSERT INTO alunos VALUES (NULL, @AlunoNome, @AlunoMatricula, @AlunoIdade" +
-                ", @AlunoTurma, @AlunoFoto, NULL, NULL)";
+            string sql = "INSERT INTO alunos VALUES (NULL, @AlunoNome, @AlunoSobrenome, @AlunoContato, @AlunoMatricula, @AlunoIdade" +
+                ", @AlunoSerie, @AlunoTurma, @AlunoFoto, NULL, NULL)";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@AlunoNome", MySqlDbType.VarChar).Value = aluno.Nome;
+            cmd.Parameters.Add("@AlunoSobrenome", MySqlDbType.VarChar).Value = aluno.Sobrenome;
+            cmd.Parameters.Add("@AlunoContato", MySqlDbType.VarChar).Value = aluno.Contato;
             cmd.Parameters.Add("@AlunoMatricula", MySqlDbType.Int64).Value = aluno.Matricula;
             cmd.Parameters.Add("@AlunoIdade", MySqlDbType.Int16).Value = aluno.Idade;
+            cmd.Parameters.Add("@AlunoSerie", MySqlDbType.Int16).Value = aluno.Serie;
             cmd.Parameters.Add("@AlunoTurma", MySqlDbType.VarChar).Value = aluno.Turma;
             cmd.Parameters.Add("@AlunoFoto", MySqlDbType.LongBlob).Value = aluno.Foto;
             try
@@ -49,9 +52,9 @@ namespace CRUD_escola
             con.Close();
         }
 
-        public static void ReadAlunos(DataGridView dataGridView)
+        public static DataSet ReadAlunos()
         {
-            string sql = "SELECT NOME, MATRICULA, IDADE, TURMA FROM ALUNOS";
+            string sql = "SELECT NOME, SOBRENOME, CONTATO, MATRICULA, IDADE, SERIE, TURMA FROM ALUNOS";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
@@ -61,7 +64,7 @@ namespace CRUD_escola
                 {
                     DataSet dataSet = new DataSet();
                     adapter.Fill(dataSet);
-                    dataGridView.DataSource = dataSet.Tables[0];
+                    return dataSet;
                 }
             }
             catch (MySqlException ex)
@@ -69,17 +72,21 @@ namespace CRUD_escola
                 MessageBox.Show(ex.Message);
             }
             con.Close();
+            return null;
         }
 
         public static void UpdateAluno(Aluno aluno)
         {
-            string sql = "UPDATE alunos SET NOME = @AlunoNome, IDADE = @AlunoIdade," +
-                "TURMA = @AlunoTurma, FOTO = @AlunoFoto, UPDATED_AT = @UpdatedAt WHERE MATRICULA = @AlunoMatricula";
+            string sql = "UPDATE alunos SET NOME = @AlunoNome, SOBRENOME = @AlunoSobrenome, CONTATO = @AlunoContato, IDADE = @AlunoIdade," +
+                "SERIE = @AlunoSerie, TURMA = @AlunoTurma, FOTO = @AlunoFoto, UPDATED_AT = @UpdatedAt WHERE MATRICULA = @AlunoMatricula";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@AlunoNome", MySqlDbType.VarChar).Value = aluno.Nome;
+            cmd.Parameters.Add("@AlunoSobrenome", MySqlDbType.VarChar).Value = aluno.Sobrenome;
+            cmd.Parameters.Add("@AlunoContato", MySqlDbType.VarChar).Value = aluno.Contato;
             cmd.Parameters.Add("@AlunoIdade", MySqlDbType.Int16).Value = aluno.Idade;
+            cmd.Parameters.Add("@AlunoSerie", MySqlDbType.Int16).Value = aluno.Serie;
             cmd.Parameters.Add("@AlunoTurma", MySqlDbType.VarChar).Value = aluno.Turma;
             cmd.Parameters.Add("@AlunoFoto", MySqlDbType.LongBlob).Value = aluno.Foto;
             cmd.Parameters.Add("@UpdatedAt", MySqlDbType.Timestamp).Value = DateTime.Now;
@@ -95,7 +102,7 @@ namespace CRUD_escola
             con.Close();
         }
 
-        public static void Delete(int matricula)
+        public static void DeleteAlunos(int matricula)
         {
             string sql = "DELETE FROM alunos WHERE MATRICULA = @AlunoMatricula";
             MySqlConnection con = GetConnection();
@@ -134,6 +141,27 @@ namespace CRUD_escola
             con.Close();
             if (i > 0) matriculaExiste = true;
             return matriculaExiste;
+        }
+
+        public static byte[] pegarFoto(int matricula)
+        {
+            string sql = "SELECT FOTO FROM alunos WHERE MATRICULA = @UsuarioMatricula";
+            MySqlConnection con = GetConnection();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Parameters.Add("@UsuarioMatricula", MySqlDbType.Int32).Value = matricula;
+
+            try
+            {
+                byte[] foto = (byte[])(cmd.ExecuteScalar());
+                return foto;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            con.Close();
+            return null;
         }
     }
 }

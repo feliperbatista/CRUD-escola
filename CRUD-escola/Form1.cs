@@ -1,202 +1,285 @@
-using BCrypt.Net;
-using static BCrypt.Net.BCrypt;
+Ôªøusing BCrypt.Net;
+using CRUD_escola.Properties;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CRUD_escola
 {
     public partial class Form1 : Form
     {
+        public static Color cinza = Color.LightGray;
+        public static Color vermelho = Color.IndianRed;
+        public static Color verde = Color.FromArgb(14, 201, 120);
+
         public Form1()
         {
             InitializeComponent();
-            buttonLogin.Click += ButtonLogin_Click;
-            buttonCadastrar.Click += ButtonCadastrar_Click;
-            buttonExibirSenhaLogin.Click += ButtonExibirSenhaLogin_Click;
-            buttonExibirSenhaCadastro.Click += ButtonExibirSenhaCadastro_Click;
+
+            pictureBoxLogin.Click += PictureBoxLogin_Click;
+            pictureBoxCadastrar.Click += PictureBoxCadastrar_Click;
+            pictureBoxExibirSenhaLogin.Click += PictureBoxExibirSenhaLogin_Click;
+
+
+            textBoxEmailLogin.Enter += TextBoxEmailLogin_Enter;
+            textBoxEmailLogin.Leave += TextBoxEmailLogin_Leave;
+            textBoxSenhaLogin.Enter += TextBoxSenhaLogin_Enter;
+            textBoxSenhaLogin.Leave += TextBoxSenhaLogin_Leave;
+
+            pictureBoxEmailLogin.Click += PictureBoxEmailLogin_Click;
+            pictureBoxSenhaLogin.Click += PictureBoxSenhaLogin_Click;
+
+            pictureBoxLogin.MouseEnter += PictureBoxLogin_MouseEnter;
+            pictureBoxLogin.MouseLeave += PictureBoxLogin_MouseLeave;
+            pictureBoxCadastrar.MouseEnter += PictureBoxCadastrar_MouseEnter;
+            pictureBoxCadastrar.MouseLeave += PictureBoxCadastrar_MouseLeave;
+
+            pictureBoxFecharJanela.Click += PictureBoxFecharJanela_Click;
+
+            panelEmailLogin.Paint += PanelEmailLogin_Paint;
+            panelSenhaLogin.Paint += PanelSenhaLogin_Paint;
+
+            textBoxEmailLogin.TextChanged += TextBoxEmailLogin_TextChanged;
+            textBoxSenhaLogin.TextChanged += TextBoxSenhaLogin_TextChanged;
+
+            ActiveControl = label1;
         }
 
-        private string mensagemErro = string.Empty;
-
-        private void ButtonLogin_Click(object? sender, EventArgs e)
+        private void PictureBoxLogin_Click(object? sender, EventArgs e)
         {
-            mensagemErro = string.Empty;
-            labelMensagemLogin.ForeColor = Color.IndianRed;
+
+            Alunos alunos = new();
+            alunos.Show();
+            alunos.BringToFront();
 
             string email = textBoxEmailLogin.Text;
             string senha = textBoxSenhaLogin.Text;
+            Validacao.erroSenha = false;
 
-            //verificar se email j· existe no banco de dados
-            bool emailExiste = verificaEmail(email, labelMensagemLogin, "login");
+            textBoxEmailLogin.ForeColor = cinza;
+            Validacao.pintarBorda(panelEmailLogin, cinza);
+            pictureBoxEmailLogin.Image = Resources.icone_email;
+            textBoxSenhaLogin.ForeColor = cinza;
+            Validacao.pintarBorda(panelSenhaLogin, cinza);
+            pictureBoxSenhaLogin.Image = Resources.icone_senha;
+            if(textBoxSenhaLogin.Text != "Digite sua senha")
+                textBoxSenhaLogin.PasswordChar = '‚óè';
+            pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
+            //pictureBoxLogin.Focus();
+
+            //verificar se email j√° existe no banco de dados
+
+            bool emailValido = Validacao.validaEmail(email, labelErroEmailLogin, panelEmailLogin, pictureBoxEmailLogin);
+            bool senhaValida = Validacao.validaSenha(senha, labelErroSenhaLogin, textBoxSenhaLogin, panelSenhaLogin, pictureBoxSenhaLogin, pictureBoxExibirSenhaLogin);
+
+            if (!emailValido || !senhaValida)
+                return;
+                
+
+            bool emailExiste = Validacao.verificaEmail(email, labelErroEmailLogin, textBoxEmailLogin, panelEmailLogin, pictureBoxEmailLogin);
 
             //verificar se senha inserida corresponde ao email na base de dados
-            //se corresponder, abre-se novo formul·rio
+            //se corresponder, abre-se novo formul√°rio
 
             /*
-            if(emailExiste)
+            if (emailExiste)
             {
-                if (verificaSenha(email, senha))
+                if (Validacao.verificaSenha(email, senha, labelErroSenhaLogin, panelSenhaLogin, pictureBoxSenhaLogin, pictureBoxExibirSenhaLogin))
                 {
                     Alunos alunos = (Alunos)Application.OpenForms["alunos"];
-                    if(alunos == null)
+                    if (alunos == null)
                     {
                         alunos = new()
                         {
                             Name = "alunos"
                         };
                         alunos.Show();
-                        labelMensagemLogin.Visible = false;
                     }
                     else
                     {
+                        if(alunos.WindowState == FormWindowState.Minimized)
+                            alunos.WindowState = FormWindowState.Normal;
                         alunos.BringToFront();
                     }
                 }
             }
             */
-            Alunos alunos = new();
-            alunos.Show();
-        }
-
-        private void ButtonCadastrar_Click(object? sender, EventArgs e)
-        {
-            mensagemErro = string.Empty;
-            labelMensagemCadastro.ForeColor = Color.IndianRed;
-
-            string email = textBoxEmailCadastro.Text;
-            string senha = textBoxSenhaCadastro.Text;
-
-            //verificar se email È valido
-            bool emailValido = validaEmail(email);
             
-            //verificar se email j· existe no banco de dados
-            bool emailExiste = verificaEmail(email, labelMensagemCadastro, "cadastro");
-            
-            //verificar senha
-            bool senhaValida = validaSenha(senha, labelMensagemCadastro);
-            
-
-            if (emailValido && senhaValida &&!emailExiste)
-            {
-                //fazer hash da senha
-                string senhaHash = HashPassword(senha);
-
-                //cadastrar usuario na base de dados
-                Usuarios user = new (email, senhaHash);
-                DbUsuarios.AddUser(user);
-                if (!labelMensagemCadastro.Visible) labelMensagemCadastro.Visible = true;
-                labelMensagemCadastro.ForeColor = Color.Green;
-                labelMensagemCadastro.Text = "Cadastro realizado com sucesso!";
-            }
         }
 
-        private bool validaEmail(string email)
+        private void PictureBoxCadastrar_Click(object? sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(email))
-            {
-                mensagemErro = "Insira seu email.";
-                labelMensagemCadastro.Text = mensagemErro;
-                labelMensagemCadastro.Visible = true;
-                return false;
-            };
-
-            bool emailValido = System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"); ;
-
-            if (!emailValido)
-            {
-                mensagemErro = "Email inv·lido.";
-                labelMensagemCadastro.Text = mensagemErro;
-                labelMensagemCadastro.Visible = true;
-            }
-            return emailValido;
+            Cadastro cadastro = new();
+            cadastro.Show();
         }
 
-        private bool verificaEmail(string email, Label label, string opcao)
+        private void PictureBoxExibirSenhaLogin_Click(object? sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(email))
+            if (textBoxSenhaLogin.Focused)
             {
-                mensagemErro = "Email incorreto.";
-                label.Text = mensagemErro;
-                label.Visible = true;
-                return false;
-            }
-            bool emailExiste = DbUsuarios.verificaEmail(email);
-            if (!emailExiste && opcao=="login")
-            {
-                mensagemErro = "Email incorreto.";
-                label.Text = mensagemErro;
-                label.Visible = true;
-            }
-            if (emailExiste && opcao == "cadastro")
-            {
-                mensagemErro = "Email j· cadastrado.";
-                label.Text = mensagemErro;
-                label.Visible = true;
-            }
-            return emailExiste;
-        }
-
-        private bool validaSenha(string senha, Label label)
-        {
-            bool senhaValida = true;
-
-            if (string.IsNullOrEmpty(senha))
-            {
-                mensagemErro += "\r\nInsira sua senha.";
-                label.Text = mensagemErro;
-                label.Visible = true;
-                return senhaValida = false;
-            }
-            if (senha.Length < 3 || senha.Length > 50) senhaValida = false;
-
-            if (!senhaValida)
-            {
-                if (string.IsNullOrEmpty(mensagemErro))
+                if (textBoxSenhaLogin.PasswordChar == '\0')
                 {
-                    mensagemErro += "\r\nSenha inv·lida: senha precisa ter entre 3 e 50 caracteres.";
+                    pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+                    textBoxSenhaLogin.PasswordChar = '‚óè';
                 }
                 else
                 {
-                    mensagemErro += "Senha inv·lida: senha precisa ter entre 3 e 50 caracteres.";
+                    pictureBoxExibirSenhaLogin.Image = Resources.button_esconder_senha;
+                    textBoxSenhaLogin.PasswordChar = '\0';
                 }
-
-                label.Text = mensagemErro;
-                label.Visible = true;
             }
-            return senhaValida;
-        }
-
-        private bool verificaSenha(string email, string senha)
-        {
-            if(string.IsNullOrEmpty(senha))
-            {
-                mensagemErro = "Insira sua senha.";
-                labelMensagemLogin.Text = mensagemErro;
-                labelMensagemLogin.Visible = true;
-                return false;
-            }
-            bool senhaCorreta = DbUsuarios.verificaSenha(email, senha);
-            if (!senhaCorreta)
-            {
-                labelMensagemLogin.Text = "Senha incorreta.";
-                labelMensagemLogin.Visible = true;
-            }
-            return senhaCorreta;
-        }
-
-        private void ButtonExibirSenhaLogin_Click(object? sender, EventArgs e)
-        {
-            if (textBoxSenhaLogin.PasswordChar == '\0')
-                textBoxSenhaLogin.PasswordChar = '*';
             else
+            {
+                if (textBoxSenhaLogin.PasswordChar == '\0')
+                {
+                    textBoxSenhaLogin.PasswordChar = '‚óè';
+                    if (Validacao.erroSenha)
+                        pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_erro;
+                    else
+                        pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
+                }
+                else
+                {
+                    textBoxSenhaLogin.PasswordChar = '\0';
+                    if(Validacao.erroSenha)
+                        pictureBoxExibirSenhaLogin.Image = Resources.button_esconder_senha_erro;
+                    else
+                        pictureBoxExibirSenhaLogin.Image = Resources.button_esconder_senha_cinza;
+
+                }
+            }   
+        }
+
+
+        private void TextBoxEmailLogin_Enter(object? sender, EventArgs e)
+        {
+            pictureBoxEmailLogin.Image = Resources.icone_email_colorido;
+            textBoxEmailLogin.ForeColor = verde;
+            if (textBoxEmailLogin.Text == "Digite seu email")
+            {
+                textBoxEmailLogin.Text = string.Empty;
+            }
+            Validacao.pintarBorda(panelEmailLogin, verde);
+        }
+
+        private void TextBoxEmailLogin_Leave(object? sender, EventArgs e)
+        {
+            textBoxEmailLogin.ForeColor = Color.Silver;
+            pictureBoxEmailLogin.Image = Resources.icone_email;
+            if (textBoxEmailLogin.Text == string.Empty)
+            {
+                textBoxEmailLogin.Text = "Digite seu email";
+            }
+            Validacao.pintarBorda(panelEmailLogin, cinza);
+        }
+
+        private void TextBoxSenhaLogin_Enter(object? sender, EventArgs e)
+        {
+            textBoxSenhaLogin.BackColor = Color.White;
+            pictureBoxSenhaLogin.Image = Resources.icone_senha_colorido;
+            pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+            textBoxSenhaLogin.ForeColor = verde;
+            if (textBoxSenhaLogin.Text == "Digite sua senha")
+            {
+                textBoxSenhaLogin.PasswordChar = '‚óè';
+                textBoxSenhaLogin.Text = string.Empty;
+            }
+            Validacao.pintarBorda(panelSenhaLogin, verde);
+
+        }
+
+        private void TextBoxSenhaLogin_Leave(object? sender, EventArgs e)
+        {
+            textBoxSenhaLogin.ForeColor = Color.Silver;
+            pictureBoxSenhaLogin.Image = Resources.icone_senha;
+            if (textBoxSenhaLogin.Text == string.Empty)
+            {
+                textBoxSenhaLogin.Text = "Digite sua senha";
                 textBoxSenhaLogin.PasswordChar = '\0';
+            }
+            else
+                textBoxSenhaLogin.PasswordChar = '‚óè';
+            if (textBoxSenhaLogin.PasswordChar == '‚óè')
+                pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
+            else
+                pictureBoxExibirSenhaLogin.Image = Resources.button_esconder_senha_cinza;
+            Validacao.pintarBorda(panelSenhaLogin, cinza);
         }
 
-        private void ButtonExibirSenhaCadastro_Click(object? sender, EventArgs e)
+        private void PanelEmailLogin_Paint(object? sender, PaintEventArgs e)
         {
-            if (textBoxSenhaCadastro.PasswordChar == '\0')
-                textBoxSenhaCadastro.PasswordChar = '*';
-            else
-                textBoxSenhaCadastro.PasswordChar = '\0';
+            Validacao.pintarBorda(panelEmailLogin, cinza);
+        }
+
+        private void PanelSenhaLogin_Paint(object? sender, PaintEventArgs e)
+        {
+            Validacao.pintarBorda(panelSenhaLogin, cinza);
+        }
+
+        private void PictureBoxLogin_MouseEnter(object? sender, EventArgs e)
+        {
+            pictureBoxLogin.Image = Resources.buttonn_login_branco;
+        }
+
+        private void PictureBoxLogin_MouseLeave(object? sender, EventArgs e)
+        {
+            pictureBoxLogin.Image = Resources.button_login_colorido;
+        }
+
+        private void PictureBoxCadastrar_MouseEnter(object? sender, EventArgs e)
+        {
+            pictureBoxCadastrar.Image = Resources.button_cadastrar_inicio_colorido;
+        }
+
+        private void PictureBoxCadastrar_MouseLeave(object? sender, EventArgs e)
+        {
+            pictureBoxCadastrar.Image = Resources.button_cadastro_inicio;
+        }
+
+
+        private void PictureBoxEmailLogin_Click(object? sender, EventArgs e)
+        {
+            textBoxEmailLogin.Focus();
+        }
+
+        private void PictureBoxSenhaLogin_Click(object? sender, EventArgs e)
+        {
+            textBoxSenhaLogin.Focus();
+            pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+        }
+
+
+        private void TextBoxEmailLogin_TextChanged(object? sender, EventArgs e)
+        {
+            labelErroEmailLogin.Visible = false;
+            Validacao.pintarBorda(panelEmailLogin, verde);
+            if (textBoxEmailLogin.Text != "Digite seu email")
+            {
+                textBoxEmailLogin.ForeColor = verde;
+                pictureBoxEmailLogin.Image = Resources.icone_email_colorido;
+            }
+        }
+
+        private void TextBoxSenhaLogin_TextChanged(object? sender, EventArgs e)
+        {
+            labelErroSenhaLogin.Visible = false;
+            Validacao.pintarBorda(panelSenhaLogin, verde);
+            Validacao.erroSenha = false;
+            if (textBoxSenhaLogin.Text != "Digite sua senha")
+            {
+                textBoxSenhaLogin.ForeColor = verde;
+                pictureBoxSenhaLogin.Image = Resources.icone_senha_colorido;
+                pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+            }
+        }
+
+        private void PictureBoxFecharJanela_Click(object? sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
