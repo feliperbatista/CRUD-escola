@@ -6,6 +6,7 @@
 *.suo
 *.user
 *.sln.docstates
+Privado.cs
 
 # Build results
 [Dd]ebug/
@@ -201,5 +202,3 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
-Privado.cs
