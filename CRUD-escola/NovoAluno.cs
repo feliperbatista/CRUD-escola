@@ -22,11 +22,16 @@ namespace CRUD_escola
         Color corSerie = Form1.cinza;
         Color corTurma = Form1.cinza;
 
-        public NovoAluno()
+        private readonly int Index = 0;
+
+        public NovoAluno(int index)
         {
             InitializeComponent();
+            Index = index;
 
             ActiveControl = pictureBoxCadastrar;
+
+            Load += NovoAluno_Load;
 
             panelNome.Paint += PanelNome_Paint;
             panelSobrenome.Paint += PanelSobrenome_Paint;
@@ -52,19 +57,62 @@ namespace CRUD_escola
             comboBoxSerie.Leave += ComboBoxSerie_Leave;
             comboBoxTurma.Leave += ComboBoxTurma_Leave;
 
+            textBoxNome.KeyDown += TextBoxNome_KeyDown;
+            textBoxSobrenome.KeyDown += TextBoxSobrenome_KeyDown;
+            maskedTextBoxTelefone.KeyDown += MaskedTextBoxTelefone_KeyDown;
+            textBoxMatricula.KeyDown += TextBoxMatricula_KeyDown;
+            textBoxIdade.KeyDown += TextBoxIdade_KeyDown;
+            comboBoxSerie.SelectionChangeCommitted += ComboBoxSerie_SelectionChangeCommitted;
+            comboBoxTurma.SelectionChangeCommitted += ComboBoxTurma_SelectionChangeCommitted;
+
+            comboBoxSerie.KeyPress += ComboBoxSerie_KeyPress;
+            comboBoxTurma.KeyPress += ComboBoxTurma_KeyPress;
+
             pictureBoxEditarFoto.Click += PictureBoxEditarFoto_Click;
 
             pictureBoxCadastrar.Click += PictureBoxCadastrar_Click;
             pictureBoxCadastrar.MouseEnter += PictureBoxCadastrar_MouseEnter;
             pictureBoxCadastrar.MouseLeave += PictureBoxCadastrar_MouseLeave;
 
-            pictureBoxCancelar.Click += PictureBoxCancelar_Click;
-            pictureBoxCancelar.MouseEnter += PictureBoxCancelar_MouseEnter;
-            pictureBoxCancelar.MouseLeave += PictureBoxCancelar_MouseLeave;
 
-            textBoxMatricula.TextChanged += TextBoxMatricula_TextChanged;
-            textBoxIdade.TextChanged += TextBoxIdade_TextChanged;
+            panelNome.Click += PanelNome_Click;
+            panelSobrenome.Click += PanelSobrenome_Click;
+            panelTelefone.Click += PanelTelefone_Click;
+            panelMatricula.Click += PanelMatricula_Click;
+            panelIdade.Click += PanelIdade_Click;
+            panelSerie.Click += PanelSerie_Click;
+            panelTurma.Click += PanelTurma_Click;
 
+            pictureBoxNome.Click += PictureBoxNome_Click;
+            pictureBoxSobrenome.Click += PictureBoxSobrenome_Click;
+            pictureBoxTelefone.Click += PictureBoxTelefone_Click;
+            pictureBoxMatricula.Click += PictureBoxMatricula_Click;
+            pictureBoxIdade.Click += PictureBoxIdade_Click;
+            pictureBoxSerie.Click += PictureBoxSerie_Click;
+            pictureBoxTurma.Click += PictureBoxTurma_Click;
+
+        }
+
+        private void NovoAluno_Load(object? sender, EventArgs e)
+        {
+            if (Index != -1)
+            {
+                textBoxNome.Text = Alunos.ds.Tables[0].Rows[Index].Field<string>(0);
+                textBoxSobrenome.Text = Alunos.ds.Tables[0].Rows[Index].Field<string>(1);
+                maskedTextBoxTelefone.Text = Alunos.ds.Tables[0].Rows[Index].Field<string>(2);
+                textBoxMatricula.Text = Alunos.ds.Tables[0].Rows[Index].Field<int>(3).ToString();
+                textBoxIdade.Text = Alunos.ds.Tables[0].Rows[Index].Field<int>(4).ToString();
+                comboBoxSerie.Text = Alunos.ds.Tables[0].Rows[Index].Field<int>(5).ToString();
+                comboBoxTurma.Text = Alunos.ds.Tables[0].Rows[Index].Field<string>(6);
+                byte[] imageEmByte = Alunos.ds.Tables[0].Rows[Index].Field<byte[]>(7);
+                if (imageEmByte != null)
+                {
+                    var ms = new MemoryStream(imageEmByte);
+                    Image imagem = Image.FromStream(ms);
+                    pictureBoxFoto.Image = imagem;
+                    pictureBoxFoto.BackgroundImage = null;
+                }
+            }
         }
 
         private void PanelNome_Paint(object? sender, PaintEventArgs e)
@@ -104,138 +152,153 @@ namespace CRUD_escola
 
         private void TextBoxNome_Enter(object? sender, EventArgs e)
         {
-            corNome = Form1.verde;
-            if(textBoxNome.Text == "Nome") 
-                textBoxNome.Text = string.Empty;
-            textBoxNome.ForeColor = Form1.verde;
-            pictureBoxNome.Image = Resources.icone_pessoa_colorido;
-            Validacao.pintarBorda(panelNome, Form1.verde);
+            corNome = IndicaEntrada(textBoxNome, "Nome", pictureBoxNome, Resources.icone_pessoa_colorido);
         }
 
         private void TextBoxSobrenome_Enter(object? sender, EventArgs e)
         {
-            corSobrenome = Form1.verde;
-            if (textBoxSobrenome.Text == "Sobrenome")
-                textBoxSobrenome.Text = string.Empty;
-            textBoxSobrenome.ForeColor = Form1.verde;
-            pictureBoxSobrenome.Image = Resources.icone_pessoa_colorido;
-            Validacao.pintarBorda(panelSobrenome, Form1.verde);
+            corSobrenome = IndicaEntrada(textBoxSobrenome, "Sobrenome", pictureBoxSobrenome, Resources.icone_pessoa_colorido);
         }
 
         private void MaskedTextBoxTelefone_Enter(object? sender, EventArgs e)
         {
-            corTelefone = Form1.verde;
-            maskedTextBoxTelefone.ForeColor = Form1.verde;
-            pictureBoxTelefone.Image = Resources.icone_telefone_colorido;
-            Validacao.pintarBorda(panelTelefone, Form1.verde);
+            corTelefone = IndicaEntrada(maskedTextBoxTelefone, string.Empty, pictureBoxTelefone, Resources.icone_telefone_colorido);
         }
 
         private void TextBoxMatricula_Enter(object? sender, EventArgs e)
         {
-            corMatricula = Form1.verde;
-            if (textBoxMatricula.Text == "Matrícula")
-                textBoxMatricula.Text = string.Empty;
-            textBoxMatricula.ForeColor = Form1.verde;
-            pictureBoxMatricula.Image = Resources.icone_matricula_colorido;
-            Validacao.pintarBorda(panelMatricula, Form1.verde);
+            corMatricula = IndicaEntrada(textBoxMatricula, "Matrícula",  pictureBoxMatricula, Resources.icone_matricula_colorido);
         }
 
         private void TextBoxIdade_Enter(object? sender, EventArgs e)
         {
-            corIdade = Form1.verde;
-            if (textBoxIdade.Text == "Idade")
-                textBoxIdade.Text = string.Empty;
-            textBoxIdade.ForeColor = Form1.verde;
-            pictureBoxIdade.Image = Resources.icone_idade_colorido;
-            Validacao.pintarBorda(panelIdade, Form1.verde);
+            corIdade = IndicaEntrada(textBoxIdade, "Idade", pictureBoxIdade, Resources.icone_idade_colorido);
         }
 
         private void ComboBoxSerie_Enter(object? sender, EventArgs e)
         {
-            corSerie = Form1.verde;
-            if (comboBoxSerie.Text == "Série")
-                comboBoxSerie.Text = string.Empty;
-            comboBoxSerie.ForeColor = Form1.verde;
-            pictureBoxSerie.Image = Resources.icone_turma_colorido;
-            Validacao.pintarBorda(panelSerie, Form1.verde);
+            corSerie = IndicaEntrada(comboBoxSerie, "Série", pictureBoxSerie, Resources.icone_turma_colorido);
         }
 
         private void ComboBoxTurma_Enter(object? sender, EventArgs e)
         {
-            corTurma = Form1.verde;
-            if(comboBoxTurma.Text == "Turma")
-                comboBoxTurma.Text = string.Empty;
-            comboBoxTurma.ForeColor = Form1.verde;
-            pictureBoxTurma.Image = Resources.icone_turma_colorido;
-            Validacao.pintarBorda(panelTurma, Form1.verde);
+            corTurma = IndicaEntrada(comboBoxTurma, "Turma", pictureBoxTurma, Resources.icone_turma_colorido);
         }
 
         private void TextBoxNome_Leave(object? sender, EventArgs e)
         {
-            if (textBoxNome.Text == string.Empty)
-                textBoxNome.Text = "Nome";
-            textBoxNome.ForeColor = Form1.cinza;
-            pictureBoxNome.Image = Resources.icone_pessoa;
-            corNome = Form1.cinza;
-            Validacao.pintarBorda(panelNome, Form1.cinza);
+            corNome = IndicaSaida(textBoxNome, "Nome", pictureBoxNome, Resources.icone_turma);
         }
 
         private void TextBoxSobrenome_Leave(object? sender, EventArgs e)
         {
-            if (textBoxSobrenome.Text == string.Empty)
-                textBoxSobrenome.Text = "Sobrenome";
-            textBoxSobrenome.ForeColor = Form1.cinza;
-            pictureBoxSobrenome.Image = Resources.icone_pessoa;
-            corSobrenome = Form1.cinza;
-            Validacao.pintarBorda(panelSobrenome, Form1.cinza);
+            corSobrenome = IndicaSaida(textBoxSobrenome, "Sobrenome", pictureBoxSobrenome, Resources.icone_pessoa);
         }
 
         private void MaskedTextBoxTelefone_Leave(object? sender, EventArgs e)
         {
-            maskedTextBoxTelefone.ForeColor = Form1.cinza;
-            pictureBoxTelefone.Image = Resources.icone_telefone;
-            corTelefone = Form1.cinza;
-            Validacao.pintarBorda(panelTelefone, Form1.cinza);
+            corTelefone = IndicaSaida(maskedTextBoxTelefone, string.Empty, pictureBoxTelefone, Resources.icone_telefone);
         }
 
         private void TextBoxMatricula_Leave(object? sender, EventArgs e)
         {
-            if (textBoxMatricula.Text == string.Empty)
-                textBoxMatricula.Text = "Matrícula";
-            textBoxMatricula.ForeColor = Form1.cinza;
-            pictureBoxMatricula.Image = Resources.icone_matricula;
-            corMatricula = Form1.cinza;
-            Validacao.pintarBorda(panelMatricula, Form1.cinza);
+            corMatricula = IndicaSaida(textBoxMatricula, "Matrícula", pictureBoxMatricula, Resources.icone_matricula);
         }
 
         private void TextBoxIdade_Leave(object? sender, EventArgs e)
         {
-            if (textBoxIdade.Text == string.Empty)
-                textBoxIdade.Text = "Idade";
-            textBoxIdade.ForeColor = Form1.cinza;
-            pictureBoxIdade.Image = Resources.icone_idade;
-            corIdade = Form1.cinza;
-            Validacao.pintarBorda(panelIdade, Form1.cinza);
+            corIdade = IndicaSaida(textBoxIdade, "Idade", pictureBoxIdade, Resources.icone_idade);
         }
 
         private void ComboBoxSerie_Leave(object? sender, EventArgs e)
         {
-            if (comboBoxSerie.Text == string.Empty)
-                comboBoxSerie.Text = "Série";
-            comboBoxSerie.ForeColor = Form1.cinza;
-            pictureBoxSerie.Image = Resources.icone_turma;
-            corSerie = Form1.cinza;
-            Validacao.pintarBorda(panelSerie, Form1.cinza);
+            corSerie = IndicaSaida(comboBoxSerie, "Série", pictureBoxSerie, Resources.icone_turma);
         }
 
         private void ComboBoxTurma_Leave(object? sender, EventArgs e)
         {
-            if (comboBoxTurma.Text == string.Empty)
-                comboBoxTurma.Text = "Turma";
-            comboBoxTurma.ForeColor = Form1.cinza;
-            pictureBoxTurma.Image = Resources.icone_turma;
-            corTurma = Form1.cinza;
-            Validacao.pintarBorda(panelTurma, Form1.cinza);
+            corTurma = IndicaSaida(comboBoxTurma, "Turma", pictureBoxTurma, Resources.icone_turma);
+        }
+
+
+        private void TextBoxNome_KeyDown(object? sender, KeyEventArgs e)
+        {
+            corNome = IndicaAlteracao(textBoxNome, pictureBoxNome, Resources.icone_pessoa_colorido);
+            labelErroNome.Visible = false;
+        }
+
+        private void TextBoxSobrenome_KeyDown(object? sender, KeyEventArgs e)
+        {
+            corSobrenome = IndicaAlteracao(textBoxSobrenome, pictureBoxSobrenome, Resources.icone_pessoa_colorido);
+            labelErroSobrenome.Visible = false;
+        }
+
+        private void MaskedTextBoxTelefone_KeyDown(object? sender, KeyEventArgs e)
+        {
+            corTelefone = IndicaAlteracao(maskedTextBoxTelefone, pictureBoxTelefone, Resources.icone_telefone_colorido);
+            labelErroTelefone.Visible = false;
+        }
+
+        private void TextBoxMatricula_KeyDown(object? sender, KeyEventArgs e)
+        {
+            corMatricula = IndicaAlteracao(textBoxMatricula, pictureBoxMatricula, Resources.icone_matricula_colorido);
+            labelErroMatricula.Visible = false;
+
+            if (textBoxMatricula.Text == "Matrícula")
+                return;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxMatricula.Text, "[^0-9]"))
+            {
+                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length - 1);
+                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
+            }
+            if (textBoxMatricula.Text.Length > 6)
+            {
+                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length - 1);
+                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
+            }
+        }
+
+        private void TextBoxIdade_KeyDown(object? sender, KeyEventArgs e)
+        {
+            corIdade = IndicaAlteracao(textBoxIdade, pictureBoxIdade, Resources.icone_idade_colorido);
+            labelErroIdade.Visible = false;
+
+            if (textBoxIdade.Text == "Idade")
+                return;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxIdade.Text, "[^0-9]"))
+            {
+                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
+                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
+            }
+            if (textBoxIdade.Text.Length > 2)
+            {
+                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
+                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
+            }
+        }
+
+        private void ComboBoxSerie_SelectionChangeCommitted(object? sender, EventArgs e)
+        {
+            corSerie = IndicaAlteracao(comboBoxSerie, pictureBoxSerie, Resources.icone_turma_colorido);
+            labelErroSerie.Visible = false;
+        }
+
+        private void ComboBoxTurma_SelectionChangeCommitted(object? sender, EventArgs e)
+        {
+            corTurma = IndicaAlteracao(comboBoxTurma, pictureBoxTurma, Resources.icone_turma_colorido);
+            labelErroTurma.Visible = false;
+        }
+
+        private void ComboBoxSerie_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void ComboBoxTurma_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void PictureBoxEditarFoto_Click(object? sender, EventArgs e)
@@ -254,6 +317,7 @@ namespace CRUD_escola
                     return;
                 }
                 pictureBoxFoto.Image = imagem;
+                pictureBoxFoto.BackgroundImage = null;
             }
         }
 
@@ -266,6 +330,7 @@ namespace CRUD_escola
                 {
                     Validacao.pintarBorda(panel, Form1.cinza);
                 }
+                Close();
             }
         }
 
@@ -279,70 +344,74 @@ namespace CRUD_escola
             pictureBoxCadastrar.Image = Resources.button_cadastrar_colorido;
         }
 
-        private void PictureBoxCancelar_Click(object? sender, EventArgs e)
+        private void PanelNome_Click(object? sender, EventArgs e)
         {
-            Close();
+            textBoxNome.Focus();
         }
 
-        private void PictureBoxCancelar_MouseEnter(object? sender, EventArgs e)
+        private void PanelSobrenome_Click(object? sender, EventArgs e)
         {
-            pictureBoxCancelar.Image = Resources.button_cancelar_colorido;
+            textBoxSobrenome.Focus();
         }
 
-        private void PictureBoxCancelar_MouseLeave(object? sender, EventArgs e)
+        private void PanelTelefone_Click(object? sender, EventArgs e)
         {
-            pictureBoxCancelar.Image = Resources.button_cancelar;
+            maskedTextBoxTelefone.Focus();
         }
 
-        private Aluno criarAluno()
+        private void PanelMatricula_Click(object? sender, EventArgs e)
         {
-            string nome = textBoxNome.Text;
-            string sobrenome = textBoxSobrenome.Text;
-            string contato = maskedTextBoxTelefone.Text;
-            int matricula = Convert.ToInt32(textBoxMatricula.Text);
-            int idade = Convert.ToInt16(textBoxIdade.Text);
-            string turma = comboBoxTurma.Text;
-            int serie = Convert.ToInt16(comboBoxSerie.Text);
-            byte[] foto;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Bitmap bitmap = new Bitmap(pictureBoxFoto.Image);
-                bitmap.Save(ms, ImageFormat.Jpeg);
-                foto = ms.ToArray();
-            }
-            Aluno aluno = new(nome, sobrenome, contato, matricula, idade, serie, turma, foto);
-            return aluno;
+            textBoxMatricula.Focus();
         }
 
-        private void TextBoxMatricula_TextChanged(object? sender, EventArgs e)
+        private void PanelIdade_Click(object? sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxMatricula.Text, "[^0-9]"))
-            {
-                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length - 1);
-                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
-            }
-            if (textBoxMatricula.Text.Length > 6)
-            {
-                textBoxMatricula.Text = textBoxMatricula.Text.Remove(textBoxMatricula.Text.Length - 1);
-                textBoxMatricula.Select(textBoxMatricula.Text.Length, 0);
-            }
+            textBoxIdade.Focus();   
         }
 
-        private void TextBoxIdade_TextChanged(object? sender, EventArgs e)
+        private void PanelSerie_Click(object? sender, EventArgs e)
         {
-            if (textBoxIdade.Text == "Idade")
-                return;
+            comboBoxSerie.Focus();
+        }
 
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxIdade.Text, "[^0-9]"))
-            {
-                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
-                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
-            }
-            if (textBoxIdade.Text.Length > 2)
-            {
-                textBoxIdade.Text = textBoxIdade.Text.Remove(textBoxIdade.Text.Length - 1);
-                textBoxIdade.Select(textBoxIdade.Text.Length, 0);
-            }
+        private void PanelTurma_Click(object? sender, EventArgs e)
+        {
+            comboBoxTurma.Focus();
+        }
+
+        private void PictureBoxNome_Click(object? sender, EventArgs e)
+        {
+            textBoxNome.Focus();
+        }
+
+        private void PictureBoxSobrenome_Click(object? sender, EventArgs e)
+        {
+            textBoxSobrenome.Focus();
+        }
+
+        private void PictureBoxTelefone_Click(object? sender, EventArgs e)
+        {
+            maskedTextBoxTelefone.Focus();
+        }
+
+        private void PictureBoxMatricula_Click(object? sender, EventArgs e)
+        {
+            textBoxMatricula.Focus();
+        }
+
+        private void PictureBoxIdade_Click(object? sender, EventArgs e)
+        {
+            textBoxIdade.Focus();
+        }
+
+        private void PictureBoxSerie_Click(object? sender, EventArgs e)
+        {
+            comboBoxSerie.Focus();
+        }
+
+        private void PictureBoxTurma_Click(object? sender, EventArgs e)
+        {
+            comboBoxTurma.Focus();
         }
 
         public bool Validar()
@@ -400,6 +469,31 @@ namespace CRUD_escola
             return valido;
         }
 
+        private Aluno criarAluno()
+        {
+            string nome = textBoxNome.Text;
+            string sobrenome = textBoxSobrenome.Text;
+            string contato = maskedTextBoxTelefone.Text;
+            int matricula = Convert.ToInt32(textBoxMatricula.Text);
+            int idade = Convert.ToInt16(textBoxIdade.Text);
+            string turma = comboBoxTurma.Text;
+            int serie = Convert.ToInt16(comboBoxSerie.Text);
+            byte[] foto;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                if(pictureBoxFoto.Image  != null)
+                {
+                    Bitmap bitmap = new Bitmap(pictureBoxFoto.Image);
+                    bitmap.Save(ms, ImageFormat.Jpeg);
+                    foto = ms.ToArray();
+                }
+                else
+                    foto = null;
+            }
+            Aluno aluno = new(nome, sobrenome, contato, matricula, idade, serie, turma, foto);
+            return aluno;
+        }
+
         public void IndicaErro(Label label, string erro, Control control)
         {
             label.Text = erro;
@@ -407,5 +501,29 @@ namespace CRUD_escola
             control.ForeColor = Form1.vermelho;
         }
 
+        public Color IndicaEntrada(Control control, string texto, PictureBox pb, Image image)
+        {
+            if (control.Text == texto)
+                control.Text = string.Empty;
+            control.ForeColor = Form1.verde;
+            pb.Image = image;
+            return Form1.verde;
+        }
+
+        public Color IndicaSaida(Control control, string texto, PictureBox pb, Image image)
+        {
+            if (control.Text == string.Empty)
+                control.Text = texto;
+            control.ForeColor = Form1.cinza;
+            pb.Image = image;
+            return Form1.cinza;
+        }
+
+        public Color IndicaAlteracao(Control control, PictureBox pb, Image image )
+        {
+            control.ForeColor = Form1.verde;
+            pb.Image = image;
+            return Form1.verde;
+        }
     }
 }

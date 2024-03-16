@@ -36,11 +36,11 @@
             pictureBoxEmailLogin = new PictureBox();
             panelCadastro = new Panel();
             labelFelipe = new Label();
+            pictureBoxFecharJanela = new PictureBox();
             pictureBox2 = new PictureBox();
             label2 = new Label();
             pictureBoxCadastrar = new PictureBox();
             label1 = new Label();
-            pictureBoxFecharJanela = new PictureBox();
             pictureBoxExibirSenhaLogin = new PictureBox();
             panelSenhaLogin = new Panel();
             pictureBoxSenhaLogin = new PictureBox();
@@ -54,9 +54,9 @@
             panelEmailLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxEmailLogin).BeginInit();
             panelCadastro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxExibirSenhaLogin).BeginInit();
             panelSenhaLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSenhaLogin).BeginInit();
@@ -123,6 +123,7 @@
             // 
             panelCadastro.BackgroundImage = Properties.Resources.panel_bg;
             panelCadastro.Controls.Add(labelFelipe);
+            panelCadastro.Controls.Add(pictureBoxFecharJanela);
             panelCadastro.Controls.Add(pictureBox2);
             panelCadastro.Controls.Add(label2);
             panelCadastro.Controls.Add(pictureBoxCadastrar);
@@ -144,6 +145,17 @@
             labelFelipe.Size = new Size(238, 15);
             labelFelipe.TabIndex = 18;
             labelFelipe.Text = "Desenvolvido por Felipe Rodrigues Batista";
+            // 
+            // pictureBoxFecharJanela
+            // 
+            pictureBoxFecharJanela.BackColor = Color.Transparent;
+            pictureBoxFecharJanela.Image = Properties.Resources.button_fechar_janela;
+            pictureBoxFecharJanela.Location = new Point(364, 12);
+            pictureBoxFecharJanela.Name = "pictureBoxFecharJanela";
+            pictureBoxFecharJanela.Size = new Size(22, 22);
+            pictureBoxFecharJanela.TabIndex = 11;
+            pictureBoxFecharJanela.TabStop = false;
+            toolTip1.SetToolTip(pictureBoxFecharJanela, "Fechar");
             // 
             // pictureBox2
             // 
@@ -191,20 +203,9 @@
             label1.TabIndex = 11;
             label1.Text = "Crie sua conta";
             // 
-            // pictureBoxFecharJanela
-            // 
-            pictureBoxFecharJanela.BackColor = Color.Transparent;
-            pictureBoxFecharJanela.Image = Properties.Resources.button_fechar_janela;
-            pictureBoxFecharJanela.Location = new Point(12, 12);
-            pictureBoxFecharJanela.Name = "pictureBoxFecharJanela";
-            pictureBoxFecharJanela.Size = new Size(22, 22);
-            pictureBoxFecharJanela.TabIndex = 11;
-            pictureBoxFecharJanela.TabStop = false;
-            toolTip1.SetToolTip(pictureBoxFecharJanela, "Fechar");
-            // 
             // pictureBoxExibirSenhaLogin
             // 
-            pictureBoxExibirSenhaLogin.Image = Properties.Resources.button_exibir_senha_cinza;
+            pictureBoxExibirSenhaLogin.Image = Properties.Resources.button_esconder_senha_cinza;
             pictureBoxExibirSenhaLogin.Location = new Point(265, 7);
             pictureBoxExibirSenhaLogin.Name = "pictureBoxExibirSenhaLogin";
             pictureBoxExibirSenhaLogin.Size = new Size(42, 28);
@@ -253,7 +254,6 @@
             // panelAcesso
             // 
             panelAcesso.Controls.Add(pictureBox1);
-            panelAcesso.Controls.Add(pictureBoxFecharJanela);
             panelAcesso.Controls.Add(labelErroSenhaLogin);
             panelAcesso.Controls.Add(labelErroEmailLogin);
             panelAcesso.Controls.Add(pictureBoxLogin);
@@ -320,9 +320,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxEmailLogin).EndInit();
             panelCadastro.ResumeLayout(false);
             panelCadastro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxFecharJanela).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxExibirSenhaLogin).EndInit();
             panelSenhaLogin.ResumeLayout(false);
             panelSenhaLogin.PerformLayout();

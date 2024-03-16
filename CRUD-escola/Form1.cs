@@ -15,6 +15,7 @@ namespace CRUD_escola
         public static Color cinza = Color.LightGray;
         public static Color vermelho = Color.IndianRed;
         public static Color verde = Color.FromArgb(14, 201, 120);
+        private bool senhaVisivel = false;
 
         public Form1()
         {
@@ -33,12 +34,13 @@ namespace CRUD_escola
             pictureBoxEmailLogin.Click += PictureBoxEmailLogin_Click;
             pictureBoxSenhaLogin.Click += PictureBoxSenhaLogin_Click;
 
+            panelEmailLogin.Click += PanelEmailLogin_Click;
+            panelSenhaLogin.Click += PanelSenhaLogin_Click;
+
             pictureBoxLogin.MouseEnter += PictureBoxLogin_MouseEnter;
             pictureBoxLogin.MouseLeave += PictureBoxLogin_MouseLeave;
             pictureBoxCadastrar.MouseEnter += PictureBoxCadastrar_MouseEnter;
             pictureBoxCadastrar.MouseLeave += PictureBoxCadastrar_MouseLeave;
-
-            pictureBoxFecharJanela.Click += PictureBoxFecharJanela_Click;
 
             panelEmailLogin.Paint += PanelEmailLogin_Paint;
             panelSenhaLogin.Paint += PanelSenhaLogin_Paint;
@@ -46,16 +48,16 @@ namespace CRUD_escola
             textBoxEmailLogin.TextChanged += TextBoxEmailLogin_TextChanged;
             textBoxSenhaLogin.TextChanged += TextBoxSenhaLogin_TextChanged;
 
+            pictureBoxFecharJanela.Click += PictureBoxFecharJanela_Click;
+
+            pictureBoxFecharJanela.MouseEnter += PictureBoxFecharJanela_MouseEnter;
+            pictureBoxFecharJanela.MouseLeave += PictureBoxFecharJanela_MouseLeave;
+
             ActiveControl = label1;
         }
 
         private void PictureBoxLogin_Click(object? sender, EventArgs e)
         {
-
-            Alunos alunos = new();
-            alunos.Show();
-            alunos.BringToFront();
-
             string email = textBoxEmailLogin.Text;
             string senha = textBoxSenhaLogin.Text;
             Validacao.erroSenha = false;
@@ -69,7 +71,6 @@ namespace CRUD_escola
             if(textBoxSenhaLogin.Text != "Digite sua senha")
                 textBoxSenhaLogin.PasswordChar = '●';
             pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
-            //pictureBoxLogin.Focus();
 
             //verificar se email já existe no banco de dados
 
@@ -85,7 +86,7 @@ namespace CRUD_escola
             //verificar se senha inserida corresponde ao email na base de dados
             //se corresponder, abre-se novo formulário
 
-            /*
+            
             if (emailExiste)
             {
                 if (Validacao.verificaSenha(email, senha, labelErroSenhaLogin, panelSenhaLogin, pictureBoxSenhaLogin, pictureBoxExibirSenhaLogin))
@@ -107,8 +108,6 @@ namespace CRUD_escola
                     }
                 }
             }
-            */
-            
         }
 
         private void PictureBoxCadastrar_Click(object? sender, EventArgs e)
@@ -119,9 +118,13 @@ namespace CRUD_escola
 
         private void PictureBoxExibirSenhaLogin_Click(object? sender, EventArgs e)
         {
+            if (senhaVisivel)
+                senhaVisivel = false;
+            else
+                senhaVisivel = true;
             if (textBoxSenhaLogin.Focused)
             {
-                if (textBoxSenhaLogin.PasswordChar == '\0')
+                if (senhaVisivel)
                 {
                     pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
                     textBoxSenhaLogin.PasswordChar = '●';
@@ -134,7 +137,7 @@ namespace CRUD_escola
             }
             else
             {
-                if (textBoxSenhaLogin.PasswordChar == '\0')
+                if (senhaVisivel)
                 {
                     textBoxSenhaLogin.PasswordChar = '●';
                     if (Validacao.erroSenha)
@@ -203,10 +206,7 @@ namespace CRUD_escola
             }
             else
                 textBoxSenhaLogin.PasswordChar = '●';
-            if (textBoxSenhaLogin.PasswordChar == '●')
-                pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
-            else
-                pictureBoxExibirSenhaLogin.Image = Resources.button_esconder_senha_cinza;
+            pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha_cinza;
             Validacao.pintarBorda(panelSenhaLogin, cinza);
         }
 
@@ -252,6 +252,17 @@ namespace CRUD_escola
             pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
         }
 
+        private void PanelEmailLogin_Click(object? sender, EventArgs e)
+        {
+            textBoxEmailLogin.Focus();
+        }
+
+        private void PanelSenhaLogin_Click(object? sender, EventArgs e)
+        {
+            textBoxSenhaLogin.Focus();
+            pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+        }
+
 
         private void TextBoxEmailLogin_TextChanged(object? sender, EventArgs e)
         {
@@ -274,12 +285,23 @@ namespace CRUD_escola
                 textBoxSenhaLogin.ForeColor = verde;
                 pictureBoxSenhaLogin.Image = Resources.icone_senha_colorido;
                 pictureBoxExibirSenhaLogin.Image = Resources.button_exibir_senha;
+                textBoxSenhaLogin.PasswordChar = '●';
             }
         }
 
         private void PictureBoxFecharJanela_Click(object? sender, EventArgs e)
         {
             Close();
+        }
+
+        private void PictureBoxFecharJanela_MouseEnter(object? sender, EventArgs e)
+        {
+            pictureBoxFecharJanela.Image = Resources.button_fechar_janela_2;
+        }
+
+        private void PictureBoxFecharJanela_MouseLeave(object? sender, EventArgs e)
+        {
+            pictureBoxFecharJanela.Image = Resources.button_fechar_janela;
         }
     }
 }

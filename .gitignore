@@ -201,3 +201,5 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+Privado.cs

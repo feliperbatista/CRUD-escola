@@ -13,7 +13,7 @@ namespace CRUD_escola
     {
         public static MySqlConnection GetConnection()
         {
-            string sql = "Server = localhost; Port = 3306; Database = escola; Uid = root; Pwd =";
+            string sql = Privado.sqlAluno;
             MySqlConnection con = new MySqlConnection(sql);
             try
             {
@@ -28,8 +28,8 @@ namespace CRUD_escola
 
         public static async void AddAluno(Aluno aluno)
         {
-            string sql = "INSERT INTO alunos VALUES (NULL, @AlunoNome, @AlunoSobrenome, @AlunoContato, @AlunoMatricula, @AlunoIdade" +
-                ", @AlunoSerie, @AlunoTurma, @AlunoFoto, NULL, NULL)";
+            string sql = "INSERT INTO alunos VALUES (@AlunoNome, @AlunoSobrenome, @AlunoContato, @AlunoMatricula, @AlunoIdade" +
+                ", @AlunoSerie, @AlunoTurma, @AlunoFoto, @Created_at, @Updated_at)";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
@@ -41,6 +41,8 @@ namespace CRUD_escola
             cmd.Parameters.Add("@AlunoSerie", MySqlDbType.Int16).Value = aluno.Serie;
             cmd.Parameters.Add("@AlunoTurma", MySqlDbType.VarChar).Value = aluno.Turma;
             cmd.Parameters.Add("@AlunoFoto", MySqlDbType.LongBlob).Value = aluno.Foto;
+            cmd.Parameters.Add("@Created_at", MySqlDbType.Timestamp).Value = DateTime.Now;
+            cmd.Parameters.Add("@Updated_at", MySqlDbType.Timestamp).Value = DateTime.Now;
             try
             {
                 await cmd.ExecuteNonQueryAsync();
@@ -54,7 +56,7 @@ namespace CRUD_escola
 
         public static DataSet ReadAlunos()
         {
-            string sql = "SELECT NOME, SOBRENOME, CONTATO, MATRICULA, IDADE, SERIE, TURMA FROM ALUNOS";
+            string sql = "SELECT NOME, SOBRENOME, TELEFONE, MATRICULA, IDADE, SERIE, TURMA, FOTO FROM alunos";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;

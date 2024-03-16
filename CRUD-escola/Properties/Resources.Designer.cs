@@ -73,6 +73,16 @@ namespace CRUD_escola.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adicionar_escuro {
+            get {
+                object obj = ResourceManager.GetObject("adicionar-escuro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_cadastar_aluno {
             get {
                 object obj = ResourceManager.GetObject("button-cadastar-aluno", resourceCulture);
@@ -213,6 +223,16 @@ namespace CRUD_escola.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_fechar_janela_2 {
+            get {
+                object obj = ResourceManager.GetObject("button-fechar-janela-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_login_colorido {
             get {
                 object obj = ResourceManager.GetObject("button-login-colorido", resourceCulture);
@@ -226,6 +246,16 @@ namespace CRUD_escola.Properties {
         internal static System.Drawing.Bitmap button_minimizar_janela {
             get {
                 object obj = ResourceManager.GetObject("button-minimizar-janela", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_minimizar_janela_2 {
+            get {
+                object obj = ResourceManager.GetObject("button-minimizar-janela-2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +316,26 @@ namespace CRUD_escola.Properties {
         internal static System.Drawing.Bitmap circulo5 {
             get {
                 object obj = ResourceManager.GetObject("circulo5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap divisor {
+            get {
+                object obj = ResourceManager.GetObject("divisor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filtro {
+            get {
+                object obj = ResourceManager.GetObject("filtro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -563,9 +613,39 @@ namespace CRUD_escola.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pesquisar {
+            get {
+                object obj = ResourceManager.GetObject("pesquisar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pesquisar_escuro {
+            get {
+                object obj = ResourceManager.GetObject("pesquisar-escuro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_escuro {
+            get {
+                object obj = ResourceManager.GetObject("refresh-escuro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

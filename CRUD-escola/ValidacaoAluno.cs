@@ -32,8 +32,8 @@ namespace CRUD_escola
 
         public static string ValidaTelefone(string telefone)
         {
-            if (telefone == string.Empty)
-                return "Preencha o sobrenome do aluno.";
+            if (telefone == string.Empty || telefone == "(  )      -")
+                return "Preencha o telefone do aluno.";
             if (!System.Text.RegularExpressions.Regex.IsMatch(telefone, "^\\([1-9]{2}\\) (?:[2-8]|9[0-9])[0-9]{3}\\-[0-9]{4}$"))
                 return "Telefone inválido.";
             return string.Empty;
@@ -41,7 +41,7 @@ namespace CRUD_escola
 
         public static string ValidaMatricula(string matricula)
         {
-            if (matricula == string.Empty)
+            if (matricula == string.Empty || matricula == "Matrícula")
                 return "Preencha a matrícula do aluno.";
             if (matricula.Length != 6)
                 return "Matrícula deve ter seis dígitos.";
@@ -53,6 +53,8 @@ namespace CRUD_escola
             {
                 return "Matrícula deve conter apenas números.";
             }
+            if (DbAlunos.verificaMatricula(Convert.ToInt32(matricula)))
+                return "Matrícula já cadastrada para outro aluno";
             return string.Empty;
         }
 

@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BCrypt.Net.BCrypt;
-
+using System.Net.Mail;
 
 namespace CRUD_escola
 {
     public partial class Cadastro : Form
     {
         private bool borda;
+
         public Cadastro()
         {
             InitializeComponent();
@@ -44,20 +44,22 @@ namespace CRUD_escola
             pictureBoxEmailCadastro.Click += PictureBoxEmailCadastro_Click;
             pictureBoxSenhaCadastro.Click += PictureBoxSenhaCadastro_Click;
 
+            panelNomeCadastro.Click += PanelNomeCadastro_Click;
+            panelEmailCadastro.Click += PanelEmailCadastro_Click;
+            panelSenhaCadastro.Click += PanelSenhaCadastro_Click;
+
 
             textBoxNomeCadastro.TextChanged += TextBoxNomeCadastro_TextChanged;
             textBoxEmailCadastro.TextChanged += TextBoxEmailCadastro_TextChanged;
             textBoxSenhaCadastro.TextChanged += TextBoxSenhaCadastro_TextChanged;
 
             pictureBoxFecharJanela.Click += PictureBoxFecharJanela_Click;
-
+            pictureBoxFecharJanela.MouseEnter += PictureBoxFecharJanela_MouseEnter;
+            pictureBoxFecharJanela.MouseLeave += PictureBoxFecharJanela_MouseLeave;
             
-
-
             ActiveControl = labelLogin;
 
             borda = true;
-
         }
 
         private void PictureBoxCadastrar_Click(object? sender, EventArgs e)
@@ -95,18 +97,13 @@ namespace CRUD_escola
 
             //verificar se email já existe no banco de dados
             bool emailExiste = Validacao.verificaEmail(email, labelErroEmailCadastro, textBoxEmailCadastro, panelEmailCadastro, pictureBoxEmailCadastro);
-
-
+            
             if (nomeValido & emailValido && senhaValida && !emailExiste)
             {
-                //fazer hash da senha
-                string senhaHash = HashPassword(senha);
-
-                //cadastrar usuario na base de dados
-                Usuarios user = new(nome, email, senhaHash);
-                DbUsuarios.AddUser(user);
-                MessageBox.Show("Cadastro concluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                int codigo = gerarCodigo();
+                Email.EnviarEmail(textBoxEmailCadastro.Text, codigo);
+                ConfirmaCadastro confirma = new(nome, email, senha, codigo);
+                confirma.ShowDialog();
             }
         }
 
@@ -212,10 +209,7 @@ namespace CRUD_escola
             }
             else
                 textBoxSenhaCadastro.PasswordChar = '●';
-            if (textBoxSenhaCadastro.PasswordChar == '●')
-                pictureBoxExibirSenhaCadastro.Image = Resources.button_exibir_senha_cinza;
-            else
-                pictureBoxExibirSenhaCadastro.Image = Resources.button_esconder_senha_cinza;
+            pictureBoxExibirSenhaCadastro.Image = Resources.button_exibir_senha_cinza;
             Validacao.pintarBorda(panelSenhaCadastro, Form1.cinza);
         }
 
@@ -269,6 +263,22 @@ namespace CRUD_escola
             pictureBoxExibirSenhaCadastro.Image = Resources.button_exibir_senha;
         }
 
+        private void PanelNomeCadastro_Click(object? sender, EventArgs e)
+        {
+            textBoxNomeCadastro.Focus();
+        }
+
+        private void PanelEmailCadastro_Click(object? sender, EventArgs e)
+        {
+            textBoxEmailCadastro.Focus();
+        }
+
+        private void PanelSenhaCadastro_Click(object? sender, EventArgs e)
+        {
+            textBoxSenhaCadastro.Focus();
+            pictureBoxExibirSenhaCadastro.Image = Resources.button_exibir_senha;
+        }
+
         private void TextBoxNomeCadastro_TextChanged(object? sender, EventArgs e)
         {
             labelErroNomeCadastro.Visible = false;
@@ -308,5 +318,20 @@ namespace CRUD_escola
             Close();
         }
 
+        private void PictureBoxFecharJanela_MouseLeave(object? sender, EventArgs e)
+        {
+            pictureBoxFecharJanela.Image = Resources.button_fechar_janela;
+        }
+
+        private void PictureBoxFecharJanela_MouseEnter(object? sender, EventArgs e)
+        {
+            pictureBoxFecharJanela.Image = Resources.button_fechar_janela_2;
+        }
+
+        private static int gerarCodigo()
+        {
+            Random random = new();
+            return random.Next(100000, 999999);
+        }
     }
 }

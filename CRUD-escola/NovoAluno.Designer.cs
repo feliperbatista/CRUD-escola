@@ -30,8 +30,8 @@
         {
             pictureBoxFoto = new PictureBox();
             panelNome = new Panel();
-            pictureBoxNome = new PictureBox();
             textBoxNome = new TextBox();
+            pictureBoxNome = new PictureBox();
             labelErroNome = new Label();
             labelErroSobrenome = new Label();
             labelErroTelefone = new Label();
@@ -53,10 +53,9 @@
             labelErroSerie = new Label();
             labelErroTurma = new Label();
             pictureBoxCadastrar = new PictureBox();
-            pictureBoxCancelar = new PictureBox();
             panelSobrenome = new Panel();
-            pictureBoxSobrenome = new PictureBox();
             textBoxSobrenome = new TextBox();
+            pictureBoxSobrenome = new PictureBox();
             panelTelefone = new Panel();
             maskedTextBoxTelefone = new MaskedTextBox();
             pictureBoxTelefone = new PictureBox();
@@ -75,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxIdade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxEditarFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCancelar).BeginInit();
             panelSobrenome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSobrenome).BeginInit();
             panelTelefone.SuspendLayout();
@@ -84,8 +82,9 @@
             // 
             // pictureBoxFoto
             // 
+            pictureBoxFoto.BackgroundImage = Properties.Resources.icone_pessoa;
+            pictureBoxFoto.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBoxFoto.BorderStyle = BorderStyle.FixedSingle;
-            pictureBoxFoto.Image = Properties.Resources.icone_pessoa;
             pictureBoxFoto.Location = new Point(18, 17);
             pictureBoxFoto.Name = "pictureBoxFoto";
             pictureBoxFoto.Size = new Size(260, 316);
@@ -97,12 +96,23 @@
             // 
             panelNome.BackColor = Color.White;
             panelNome.CausesValidation = false;
-            panelNome.Controls.Add(pictureBoxNome);
             panelNome.Controls.Add(textBoxNome);
+            panelNome.Controls.Add(pictureBoxNome);
             panelNome.Location = new Point(305, 17);
             panelNome.Name = "panelNome";
             panelNome.Size = new Size(251, 42);
-            panelNome.TabIndex = 27;
+            panelNome.TabIndex = 0;
+            // 
+            // textBoxNome
+            // 
+            textBoxNome.BorderStyle = BorderStyle.None;
+            textBoxNome.Font = new Font("Calibri", 10.8F);
+            textBoxNome.ForeColor = Color.Silver;
+            textBoxNome.Location = new Point(44, 10);
+            textBoxNome.Name = "textBoxNome";
+            textBoxNome.Size = new Size(195, 22);
+            textBoxNome.TabIndex = 14;
+            textBoxNome.Text = "Nome";
             // 
             // pictureBoxNome
             // 
@@ -114,18 +124,6 @@
             pictureBoxNome.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxNome.TabIndex = 13;
             pictureBoxNome.TabStop = false;
-            // 
-            // textBoxNome
-            // 
-            textBoxNome.BackColor = Color.White;
-            textBoxNome.BorderStyle = BorderStyle.None;
-            textBoxNome.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxNome.ForeColor = Color.Silver;
-            textBoxNome.Location = new Point(44, 9);
-            textBoxNome.Name = "textBoxNome";
-            textBoxNome.Size = new Size(193, 22);
-            textBoxNome.TabIndex = 1;
-            textBoxNome.Text = "Nome";
             // 
             // labelErroNome
             // 
@@ -175,17 +173,16 @@
             panelMatricula.Location = new Point(305, 197);
             panelMatricula.Name = "panelMatricula";
             panelMatricula.Size = new Size(523, 42);
-            panelMatricula.TabIndex = 32;
+            panelMatricula.TabIndex = 3;
             // 
             // textBoxMatricula
             // 
-            textBoxMatricula.BackColor = Color.White;
             textBoxMatricula.BorderStyle = BorderStyle.None;
-            textBoxMatricula.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxMatricula.Font = new Font("Calibri", 10.8F);
             textBoxMatricula.ForeColor = Color.Silver;
             textBoxMatricula.Location = new Point(44, 10);
             textBoxMatricula.Name = "textBoxMatricula";
-            textBoxMatricula.Size = new Size(465, 22);
+            textBoxMatricula.Size = new Size(466, 22);
             textBoxMatricula.TabIndex = 14;
             textBoxMatricula.Text = "Matrícula";
             // 
@@ -208,9 +205,9 @@
             labelErroIdade.ForeColor = Color.IndianRed;
             labelErroIdade.Location = new Point(305, 344);
             labelErroIdade.Name = "labelErroIdade";
-            labelErroIdade.Size = new Size(72, 18);
+            labelErroIdade.Size = new Size(71, 18);
             labelErroIdade.TabIndex = 38;
-            labelErroIdade.Text = "Erro nome";
+            labelErroIdade.Text = "Erro idade";
             labelErroIdade.Visible = false;
             // 
             // panelTurma
@@ -222,18 +219,19 @@
             panelTurma.Location = new Point(669, 287);
             panelTurma.Name = "panelTurma";
             panelTurma.Size = new Size(159, 42);
-            panelTurma.TabIndex = 37;
+            panelTurma.TabIndex = 6;
             // 
             // comboBoxTurma
             // 
             comboBoxTurma.FlatStyle = FlatStyle.Flat;
+            comboBoxTurma.Font = new Font("Calibri", 10.8F);
             comboBoxTurma.ForeColor = Color.Silver;
             comboBoxTurma.FormattingEnabled = true;
             comboBoxTurma.Items.AddRange(new object[] { "A", "B", "C" });
-            comboBoxTurma.Location = new Point(44, 7);
+            comboBoxTurma.Location = new Point(44, 6);
             comboBoxTurma.Name = "comboBoxTurma";
-            comboBoxTurma.Size = new Size(102, 28);
-            comboBoxTurma.TabIndex = 16;
+            comboBoxTurma.Size = new Size(102, 30);
+            comboBoxTurma.TabIndex = 14;
             comboBoxTurma.Text = "Turma";
             // 
             // pictureBoxTurma
@@ -269,18 +267,19 @@
             panelSerie.Location = new Point(487, 287);
             panelSerie.Name = "panelSerie";
             panelSerie.Size = new Size(159, 42);
-            panelSerie.TabIndex = 35;
+            panelSerie.TabIndex = 5;
             // 
             // comboBoxSerie
             // 
             comboBoxSerie.FlatStyle = FlatStyle.Flat;
+            comboBoxSerie.Font = new Font("Calibri", 10.8F);
             comboBoxSerie.ForeColor = Color.Silver;
             comboBoxSerie.FormattingEnabled = true;
-            comboBoxSerie.Items.AddRange(new object[] { "1", "2", "3" });
-            comboBoxSerie.Location = new Point(44, 7);
+            comboBoxSerie.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
+            comboBoxSerie.Location = new Point(44, 6);
             comboBoxSerie.Name = "comboBoxSerie";
-            comboBoxSerie.Size = new Size(102, 28);
-            comboBoxSerie.TabIndex = 15;
+            comboBoxSerie.Size = new Size(102, 30);
+            comboBoxSerie.TabIndex = 14;
             comboBoxSerie.Text = "Série";
             // 
             // pictureBoxSerie
@@ -303,18 +302,17 @@
             panelIdade.Location = new Point(305, 287);
             panelIdade.Name = "panelIdade";
             panelIdade.Size = new Size(159, 42);
-            panelIdade.TabIndex = 34;
+            panelIdade.TabIndex = 4;
             // 
             // textBoxIdade
             // 
-            textBoxIdade.BackColor = Color.White;
             textBoxIdade.BorderStyle = BorderStyle.None;
-            textBoxIdade.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxIdade.Font = new Font("Calibri", 10.8F);
             textBoxIdade.ForeColor = Color.Silver;
             textBoxIdade.Location = new Point(44, 10);
             textBoxIdade.Name = "textBoxIdade";
             textBoxIdade.Size = new Size(102, 22);
-            textBoxIdade.TabIndex = 15;
+            textBoxIdade.TabIndex = 14;
             textBoxIdade.Text = "Idade";
             // 
             // pictureBoxIdade
@@ -368,34 +366,34 @@
             // 
             pictureBoxCadastrar.BackColor = Color.Transparent;
             pictureBoxCadastrar.Image = Properties.Resources.button_cadastrar_colorido;
-            pictureBoxCadastrar.Location = new Point(456, 376);
+            pictureBoxCadastrar.Location = new Point(645, 376);
             pictureBoxCadastrar.Name = "pictureBoxCadastrar";
             pictureBoxCadastrar.Size = new Size(183, 52);
             pictureBoxCadastrar.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBoxCadastrar.TabIndex = 42;
             pictureBoxCadastrar.TabStop = false;
             // 
-            // pictureBoxCancelar
-            // 
-            pictureBoxCancelar.BackColor = Color.Transparent;
-            pictureBoxCancelar.Image = Properties.Resources.button_cancelar;
-            pictureBoxCancelar.Location = new Point(645, 376);
-            pictureBoxCancelar.Name = "pictureBoxCancelar";
-            pictureBoxCancelar.Size = new Size(183, 52);
-            pictureBoxCancelar.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBoxCancelar.TabIndex = 43;
-            pictureBoxCancelar.TabStop = false;
-            // 
             // panelSobrenome
             // 
             panelSobrenome.BackColor = Color.White;
             panelSobrenome.CausesValidation = false;
-            panelSobrenome.Controls.Add(pictureBoxSobrenome);
             panelSobrenome.Controls.Add(textBoxSobrenome);
+            panelSobrenome.Controls.Add(pictureBoxSobrenome);
             panelSobrenome.Location = new Point(577, 17);
             panelSobrenome.Name = "panelSobrenome";
             panelSobrenome.Size = new Size(251, 42);
-            panelSobrenome.TabIndex = 28;
+            panelSobrenome.TabIndex = 1;
+            // 
+            // textBoxSobrenome
+            // 
+            textBoxSobrenome.BorderStyle = BorderStyle.None;
+            textBoxSobrenome.Font = new Font("Calibri", 10.8F);
+            textBoxSobrenome.ForeColor = Color.Silver;
+            textBoxSobrenome.Location = new Point(44, 10);
+            textBoxSobrenome.Name = "textBoxSobrenome";
+            textBoxSobrenome.Size = new Size(195, 22);
+            textBoxSobrenome.TabIndex = 14;
+            textBoxSobrenome.Text = "Sobrenome";
             // 
             // pictureBoxSobrenome
             // 
@@ -408,18 +406,6 @@
             pictureBoxSobrenome.TabIndex = 13;
             pictureBoxSobrenome.TabStop = false;
             // 
-            // textBoxSobrenome
-            // 
-            textBoxSobrenome.BackColor = Color.White;
-            textBoxSobrenome.BorderStyle = BorderStyle.None;
-            textBoxSobrenome.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxSobrenome.ForeColor = Color.Silver;
-            textBoxSobrenome.Location = new Point(44, 9);
-            textBoxSobrenome.Name = "textBoxSobrenome";
-            textBoxSobrenome.Size = new Size(193, 22);
-            textBoxSobrenome.TabIndex = 1;
-            textBoxSobrenome.Text = "Sobrenome";
-            // 
             // panelTelefone
             // 
             panelTelefone.BackColor = Color.White;
@@ -429,17 +415,17 @@
             panelTelefone.Location = new Point(305, 107);
             panelTelefone.Name = "panelTelefone";
             panelTelefone.Size = new Size(523, 42);
-            panelTelefone.TabIndex = 33;
+            panelTelefone.TabIndex = 2;
             // 
             // maskedTextBoxTelefone
             // 
             maskedTextBoxTelefone.BorderStyle = BorderStyle.None;
-            maskedTextBoxTelefone.Font = new Font("Calibri", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maskedTextBoxTelefone.Font = new Font("Calibri", 10.8F);
             maskedTextBoxTelefone.ForeColor = Color.Silver;
             maskedTextBoxTelefone.Location = new Point(44, 10);
             maskedTextBoxTelefone.Mask = "(99) 00000-0000";
             maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
-            maskedTextBoxTelefone.Size = new Size(465, 22);
+            maskedTextBoxTelefone.Size = new Size(466, 22);
             maskedTextBoxTelefone.TabIndex = 14;
             // 
             // pictureBoxTelefone
@@ -479,7 +465,6 @@
             Controls.Add(labelErroFoto);
             Controls.Add(panelTelefone);
             Controls.Add(panelSobrenome);
-            Controls.Add(pictureBoxCancelar);
             Controls.Add(pictureBoxCadastrar);
             Controls.Add(labelErroTurma);
             Controls.Add(labelErroSerie);
@@ -496,6 +481,7 @@
             Controls.Add(panelNome);
             Controls.Add(pictureBoxFoto);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            MaximumSize = new Size(858, 487);
             Name = "NovoAluno";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Novo aluno";
@@ -515,7 +501,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxIdade).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxEditarFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCadastrar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCancelar).EndInit();
             panelSobrenome.ResumeLayout(false);
             panelSobrenome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSobrenome).EndInit();
@@ -531,10 +516,9 @@
         private PictureBox pictureBoxFoto;
         private Panel panelNome;
         private PictureBox pictureBoxNome;
-        private TextBox textBoxNome;
         private Panel panel1;
         private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private TextBox textBoxNome;
         private Label labelErroNome;
         private Label labelErroSobrenome;
         private Panel panel2;
@@ -550,24 +534,22 @@
         private PictureBox pictureBoxSerie;
         private Panel panelIdade;
         private PictureBox pictureBoxIdade;
-        private TextBox textBox2;
-        private TextBox textBoxMatricula;
-        private ComboBox comboBoxTurma;
-        private ComboBox comboBoxSerie;
+        private TextBox textBoxSobrenome;
         private PictureBox pictureBoxEditarFoto;
-        private TextBox textBoxIdade;
         private Label labelErroSerie;
         private Label labelErroTurma;
         private PictureBox pictureBoxCadastrar;
-        private PictureBox pictureBoxCancelar;
         //private MaskedTextBox maskedTextBoxTelefone;
         private Panel panelSobrenome;
         private PictureBox pictureBoxSobrenome;
-        private TextBox textBoxSobrenome;
         private Panel panelTelefone;
-        private MaskedTextBox maskedTextBoxTelefone;
         private PictureBox pictureBoxTelefone;
         private OpenFileDialog openFileDialog1;
         private Label labelErroFoto;
+        private TextBox textBoxMatricula;
+        private ComboBox comboBoxTurma;
+        private ComboBox comboBoxSerie;
+        private TextBox textBoxIdade;
+        private MaskedTextBox maskedTextBoxTelefone;
     }
 }

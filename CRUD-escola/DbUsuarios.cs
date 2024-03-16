@@ -15,13 +15,13 @@ namespace CRUD_escola
     {
         public static MySqlConnection GetConnection()
         {
-            string sql = "Server = localhost; Port = 3306; Database = escola; Uid = root; Pwd = ";
+            string sql = Privado.sqlUsuario;
             MySqlConnection con = new MySqlConnection(sql);
             try
             {
                 con.Open();
             } 
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
                 MessageBox.Show("Não foi possível se conectar ao servidor.\r\nEntre em contato com feliperodriguesbatista@outlook.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -30,13 +30,14 @@ namespace CRUD_escola
 
         public static async void AddUser(Usuarios user)
         {
-            string sql = "INSERT INTO usuarios VALUES (NULL, @UsuarioNome, @UsuarioEmail, @UsuarioSenha, NULL, NULL )";
+            string sql = "INSERT INTO usuarios VALUES (NULL, @UsuarioNome, @UsuarioEmail, @UsuarioSenha, @Created_at)";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Parameters.Add("@UsuarioNome", MySqlDbType.VarString).Value = user.Nome;
             cmd.Parameters.Add("@UsuarioEmail", MySqlDbType.VarChar).Value = user.Email;
             cmd.Parameters.Add("@UsuarioSenha", MySqlDbType.VarChar).Value = user.Senha;
+            cmd.Parameters.Add("@Created_at", MySqlDbType.Timestamp).Value = DateTime.Now;
             try
             {
                 await cmd.ExecuteNonQueryAsync();
@@ -52,7 +53,7 @@ namespace CRUD_escola
         {
             bool emailExiste = false;
             int i = 0;
-            string sql = "SELECT * FROM usuarios WHERE EMAIL = @UsuarioEmail";
+            string sql = "SELECT * FROM usuarios WHERE email = @UsuarioEmail";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = System.Data.CommandType.Text;

@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\alunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\alunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\privado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\privado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\novoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\novoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|C:\\Users\\batis\\source\\repos\\CRUD-escola\\crud-escola\\novoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\novoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\dbusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\dbusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\validacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\validacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|C:\\Users\\batis\\source\\repos\\CRUD-escola\\crud-escola\\validacaoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\validacaoaluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\dbalunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\dbalunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|c:\\users\\batis\\source\\repos\\crud-escola\\crud-escola\\alunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60CD5D90-9AF3-461E-83F2-282477A1E8C8}|CRUD-escola\\CRUD-escola.csproj|solutionrelative:crud-escola\\alunos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\batis\\source\\repos\\CRUD-escola\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,95 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Alunos.cs",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\Alunos.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs",
-              "RelativeToolTip": "CRUD-escola\\Alunos.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAnwCoAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T13:25:36.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Alunos.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\Alunos.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs [Projeto]",
-              "RelativeToolTip": "CRUD-escola\\Alunos.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T14:00:08.042Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Validacao.cs",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Validacao.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\Validacao.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Validacao.cs",
-              "RelativeToolTip": "CRUD-escola\\Validacao.cs",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAnwJUAAAAIAAAA",
+              "Title": "DbAlunos.cs",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\DbAlunos.cs",
+              "RelativeDocumentMoniker": "CRUD-escola\\DbAlunos.cs",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\DbAlunos.cs*",
+              "RelativeToolTip": "CRUD-escola\\DbAlunos.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T13:22:51.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Cadastro.cs",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Cadastro.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\Cadastro.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Cadastro.cs",
-              "RelativeToolTip": "CRUD-escola\\Cadastro.cs",
-              "ViewState": "AQIAACYBAAAAAAAAAAAAAN8AAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T13:22:04.482Z",
+              "WhenOpened": "2024-03-16T17:37:29.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NovoAluno.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\NovoAluno.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\NovoAluno.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\NovoAluno.cs [Projeto]",
-              "RelativeToolTip": "CRUD-escola\\NovoAluno.cs [Projeto]",
+              "Title": "Email.cs",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Email.cs",
+              "RelativeDocumentMoniker": "CRUD-escola\\Email.cs",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Email.cs*",
+              "RelativeToolTip": "CRUD-escola\\Email.cs*",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T12:49:24.107Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2024-03-16T17:36:01.131Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ValidacaoAluno.cs",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\ValidacaoAluno.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\ValidacaoAluno.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\ValidacaoAluno.cs",
-              "RelativeToolTip": "CRUD-escola\\ValidacaoAluno.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAnwFcAAAAIAAAA",
+              "DocumentIndex": 0,
+              "Title": "Privado.cs",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Privado.cs",
+              "RelativeDocumentMoniker": "CRUD-escola\\Privado.cs",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Privado.cs*",
+              "RelativeToolTip": "CRUD-escola\\Privado.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-11T22:07:26.476Z",
+              "WhenOpened": "2024-03-16T17:34:41.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\.gitignore*",
+              "RelativeToolTip": ".gitignore*",
+              "ViewState": "AQIAALUAAAAAAAAAAAAAAMwAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVDhPrZRNTgIxFMerDIaEhHgU97JxwUKGGaNeQJdyCY0XUBDWGhg4AB\u002BuvQk7OQCRFTP1fXWmMxUMCT94ee177eu/LVQdFK31kTSJ0WgEIa0SMJ2A6QTHcF9iicQqlYpa/6zv2\u002B2HD5nuEkWR/l4udRzHZBtjGzFor1YrPR6P9WKx0MNhpN96vTuZThyLJ1AJLK/iJFFxjBanBsXIozqkWq2qev1c1Wq19063e0ZBwBNP4JaQ6WRC/i8ajQb5wWBAvnxyghpOqQPkC8L5IEEQKjgxaqOTFsCd65tb6nmlkur1\u002BxwXCgX58KfT7QptwvCK52wrSLcJvtUKOABkQ6HFXwbGsmMRBkchzpjNphLZDSrEn5G1qnsp\u002BPEtheloXouRnXDTTjhb5tXmeyg0IgzuliHp\u002By0OANbiOCDXp1IYo3mMUxBT8/mMA/8QhGH6ZzC4Zwi5ZqoQB9M3h62I/\u002B/SAQpniBmtPvdQyGeYUdgyX8pl05eIBSxmTzQYEYbc42AuJQWLGJNQEcrJG4A4BTHneSW2sqfKOyybkxXMPbAvrx3IsyLzkPJFmUcWYtDntjG6lIvnp8cvKXNIlPoFvstpJRlQPIAAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-03-16T17:31:01.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "NovoAluno.cs",
-              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\NovoAluno.cs",
-              "RelativeDocumentMoniker": "CRUD-escola\\NovoAluno.cs",
-              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\NovoAluno.cs",
-              "RelativeToolTip": "CRUD-escola\\NovoAluno.cs",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAYwKYAAAAQAAAA",
+              "Title": "DbUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\DbUsuarios.cs",
+              "RelativeDocumentMoniker": "CRUD-escola\\DbUsuarios.cs",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\DbUsuarios.cs*",
+              "RelativeToolTip": "CRUD-escola\\DbUsuarios.cs*",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-10T19:25:30.806Z",
+              "WhenOpened": "2024-03-16T17:29:57.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Alunos.cs",
+              "DocumentMoniker": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs",
+              "RelativeDocumentMoniker": "CRUD-escola\\Alunos.cs",
+              "ToolTip": "C:\\Users\\batis\\source\\repos\\CRUD-escola\\CRUD-escola\\Alunos.cs",
+              "RelativeToolTip": "CRUD-escola\\Alunos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T17:12:33.184Z",
               "EditorCaption": ""
             }
           ]
